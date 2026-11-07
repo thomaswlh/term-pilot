@@ -1,0 +1,67 @@
+[
+  { "id": "q01", "text": "GELH1012", "relevant": ["GELH1012:001"] },
+  {
+    "id": "q02",
+    "text": "CHLL1000",
+    "relevant": ["CHLL1000:001", "CHLL1000:002", "CHLL1000:003", "CHLL1000:004", "CHLL1000:005"]
+  },
+  { "id": "q03", "text": "CHLL2004", "relevant": ["CHLL2004:001"] },
+  { "id": "q04", "text": "CHLL3000", "relevant": ["CHLL3000:001"] },
+  { "id": "q05", "text": "CSCI1004", "relevant": ["CSCI1004:001"] },
+  { "id": "q06", "text": "CSCI2003", "relevant": ["CSCI2003:001"] },
+  { "id": "q07", "text": "CSCI3012", "relevant": ["CSCI3012:001"] },
+  { "id": "q08", "text": "JAPN1000", "relevant": ["JAPN1000:001", "JAPN1000:002"] },
+  {
+    "id": "q09",
+    "text": "JAPN1004",
+    "relevant": ["JAPN1004:001", "JAPN1004:002", "JAPN1004:003", "JAPN1004:004"]
+  },
+  { "id": "q10", "text": "EDUC2025", "relevant": ["EDUC2025:001", "EDUC2025:002"] },
+  {
+    "id": "q11",
+    "text": "ENGL4000",
+    "relevant": ["ENGL4000:001", "ENGL4000:002", "ENGL4000:003", "ENGL4000:004"]
+  },
+  {
+    "id": "q12",
+    "text": "HIST4001",
+    "relevant": [
+      "HIST4001:001",
+      "HIST4001:002",
+      "HIST4001:003",
+      "HIST4001:004",
+      "HIST4001:005",
+      "HIST4001:006",
+      "HIST4001:007"
+    ]
+  },
+  {
+    "id": "q13",
+    "text": "PORT1000",
+    "relevant": [
+      "PORT1000:001",
+      "PORT1000:002",
+      "PORT1000:003",
+      "PORT1000:004",
+      "PORT1000:005",
+      "PORT1000:006",
+      "PORT1000:007",
+      "PORT1000:008"
+    ]
+  },
+  { "id": "q14", "text": "PORT1001", "relevant": ["PORT1001:001"] },
+  { "id": "q15", "text": "ACCT3002", "relevant": ["ACCT3002:001"] },
+  { "id": "q16", "text": "MATH3025", "relevant": ["MATH3025:001"] },
+  {
+    "id": "q17",
+    "text": "ISOM3000",
+    "relevant": ["ISOM3000:001", "ISOM3000:002", "ISOM3000:003"]
+  },
+  { "id": "q18", "text": "ECEN1001", "relevant": ["ECEN1001:001"] },
+  {
+    "id": "q19",
+    "text": "COMM1000",
+    "relevant": ["COMM1000:001", "COMM1000:002", "COMM1000:003", "COMM1000:004"]
+  },
+  { "id": "q20", "text": "GESB2004", "relevant": ["GESB2004:001"] }
+]
