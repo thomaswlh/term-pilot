@@ -382,7 +382,7 @@ export function CourseSearchPanel({
             onBlur={(event) => {
               event.currentTarget.style.borderColor = theme.line;
             }}
-            placeholder="Course code or professor"
+            placeholder="Course code, title, or instructor"
             style={{
               width: "100%",
               height: 38,
@@ -472,7 +472,7 @@ export function CourseSearchPanel({
           </div>
         ) : query.trim() && filteredGroups.length === 0 ? (
           <p style={{ margin: 0, padding: 8, color: theme.muted, fontSize: 13 }}>
-            No courses match &apos;{query}&apos;. Try searching by course code (e.g. MATH1001) or professor name.
+            No courses match &apos;{query}&apos;. Try a course code, a title word, or an instructor name.
           </p>
         ) : !query.trim() ? (
           <div style={{ padding: "12px 8px", color: theme.muted, fontSize: 12.5, lineHeight: 1.5 }}>

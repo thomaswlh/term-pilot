@@ -91,7 +91,7 @@ const runtime = new CopilotRuntime({
     const defined = {
       searchSections: defineTool({
         name: "searchSections",
-        description: "Search the semester catalogue by course code or professor name, not topic keywords.",
+        description: "Search the semester catalogue by course code, course title, or instructor name.",
         parameters: z.object({ query: z.string() }),
         execute: (args) => tools.searchSections(args),
       }),
