@@ -12,7 +12,8 @@
     "build": "next build",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "retrieval:score": "tsx scripts/retrieval-score.ts"
   },
   "keywords": [],
   "author": "",
