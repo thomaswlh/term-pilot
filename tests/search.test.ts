@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 import { loadCatalogue } from "../src/domain/catalogue";
 import { searchSections } from "../src/domain/search";
 import type { Catalogue, Section } from "../src/domain/types";
-import { mrr, recallAt5 } from "./retrieval/metrics";
+import { mrr, recallAt5 } from "../src/domain/retrieval/metrics";
 
 const QUERIES_PATH = path.join(process.cwd(), "tests/retrieval/queries.json");
 

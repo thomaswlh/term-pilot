@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { loadCatalogue } from "../src/domain/catalogue";
 import { scoreSectionsLegacy, searchSectionsLegacy } from "../src/domain/search-legacy";
 import type { Catalogue, Section } from "../src/domain/types";
-import { mrr, recallAt5 } from "./retrieval/metrics";
+import { mrr, recallAt5 } from "../src/domain/retrieval/metrics";
 import fs from "node:fs";
 import path from "node:path";
 
