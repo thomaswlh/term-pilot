@@ -183,6 +183,31 @@ describe("repaired searchSections", () => {
     expect(searchSections(catalogue, "13:00").map((hit) => hit.sectionKey)).toEqual(["MEET1000:001"]);
   });
 
+  it("returns only the 13:00 section when other meetings share an hour or a minute", () => {
+    const catalogue: Catalogue = {
+      sections: [
+        fixtureSection({
+          courseCode: "HALF",
+          section: "001",
+          meetings: [{ day: "TUE", startMinutes: 13 * 60 + 30, endMinutes: 14 * 60 + 45 }],
+        }),
+        fixtureSection({
+          courseCode: "START",
+          section: "001",
+          meetings: [{ day: "TUE", startMinutes: 13 * 60, endMinutes: 14 * 60 + 15 }],
+        }),
+        fixtureSection({
+          courseCode: "NINE",
+          section: "001",
+          meetings: [{ day: "TUE", startMinutes: 9 * 60, endMinutes: 10 * 60 + 15 }],
+        }),
+      ],
+      prerequisites: [],
+      majors: [],
+    };
+    expect(searchSections(catalogue, "13:00").map((hit) => hit.sectionKey)).toEqual(["START:001"]);
+  });
+
   it("returns no hits for an empty query", () => {
     expect(searchSections(algebraCatalogue(), "   ")).toEqual([]);
   });

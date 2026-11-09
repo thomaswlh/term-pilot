@@ -3,7 +3,7 @@ import type { Catalogue, Meeting, Section } from "./types";
 
 const BM25_K1 = 1.2;
 const BM25_B = 0.75;
-const TOKEN_RE = /[a-z0-9]+(?::[0-9]{3})?/g;
+const TOKEN_RE = /[a-z0-9]+(?::[0-9]{2,3})?/g;
 const SECTION_KEY_RE = /^([a-z]+)(\d+):(\d{3})$/;
 const COURSE_CODE_RE = /^([a-z]+)(\d+)$/;
 
