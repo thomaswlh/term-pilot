@@ -14,6 +14,7 @@ coverage/
 .venv/
 __pycache__/
 .pytest_cache/
+.cache/
 
 # Environment files, secrets & credentials
 .env
