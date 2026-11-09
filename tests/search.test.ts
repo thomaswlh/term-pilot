@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 
 import { loadCatalogue } from "../src/domain/catalogue";
 import { searchSections } from "../src/domain/search";
-import type { Catalogue } from "../src/domain/types";
+import type { Catalogue, Section } from "../src/domain/types";
 import { mrr, recallAt5 } from "./retrieval/metrics";
 
 const QUERIES_PATH = path.join(process.cwd(), "tests/retrieval/queries.json");
@@ -104,7 +104,7 @@ describe("searchSections", () => {
     };
 
     expect(searchSections(tiny, "quantumcomputingzephyr")).toEqual([]);
-    expect(searchSections(tiny, "algebra")).toEqual([]);
+    expect(searchSections(tiny, "algebra").map((hit) => hit.sectionKey)).toEqual(["TEST101:001"]);
     expect(searchSections(tiny, "Jones").some((hit) => hit.sectionKey === "TEST101:001")).toBe(true);
   });
 
@@ -129,3 +129,83 @@ describe("searchSections", () => {
     process.stdout.write(`Recall@5=${meanRecall} MRR=${meanMrr}\n`);
   });
 });
+
+function fixtureSection(partial: Pick<Section, "courseCode" | "section"> & Partial<Section>): Section {
+  return {
+    title: "",
+    unit: "",
+    department: "",
+    teacher: "",
+    notes: "",
+    restriction: "",
+    meetings: [],
+    ...partial,
+  };
+}
+
+describe("repaired searchSections", () => {
+  it("ranks a spaced code to that course ahead of another course with the same prefix", () => {
+    const catalogue: Catalogue = {
+      sections: [
+        fixtureSection({ courseCode: "CSCI1000", section: "001", title: "Information Technology Fundamentals and Practices" }),
+        fixtureSection({ courseCode: "CSCI1004", section: "001", title: "Introduction to Computer Science" }),
+      ],
+      prerequisites: [],
+      majors: [],
+    };
+    expect(searchSections(catalogue, "CSCI 1004")[0]?.sectionKey).toBe("CSCI1004:001");
+  });
+
+  it("ranks CSCI1004:001 ahead of CSCI1004:002", () => {
+    const catalogue: Catalogue = {
+      sections: [
+        fixtureSection({ courseCode: "CSCI1004", section: "002", title: "Introduction to Computer Science" }),
+        fixtureSection({ courseCode: "CSCI1004", section: "001", title: "Introduction to Computer Science" }),
+      ],
+      prerequisites: [],
+      majors: [],
+    };
+    expect(searchSections(catalogue, "CSCI1004:001")[0]?.sectionKey).toBe("CSCI1004:001");
+  });
+
+  it("matches a rendered Tuesday meeting from the query 13:00", () => {
+    const catalogue: Catalogue = {
+      sections: [
+        fixtureSection({
+          courseCode: "MEET1000",
+          section: "001",
+          meetings: [{ day: "TUE", startMinutes: 13 * 60, endMinutes: 14 * 60 + 15 }],
+        }),
+      ],
+      prerequisites: [],
+      majors: [],
+    };
+    expect(searchSections(catalogue, "13:00").map((hit) => hit.sectionKey)).toEqual(["MEET1000:001"]);
+  });
+
+  it("returns no hits for an empty query", () => {
+    expect(searchSections(algebraCatalogue(), "   ")).toEqual([]);
+  });
+
+  it("reuses the index cached on the catalogue object", () => {
+    const catalogue = algebraCatalogue();
+    expect(searchSections(catalogue, "algebra").map((hit) => hit.sectionKey)).toEqual(["TEST101:001"]);
+    catalogue.sections[0]!.title = "Unrelated";
+    expect(searchSections(catalogue, "algebra").map((hit) => hit.sectionKey)).toEqual(["TEST101:001"]);
+  });
+});
+
+function algebraCatalogue(): Catalogue {
+  return {
+    sections: [
+      fixtureSection({
+        courseCode: "TEST101",
+        section: "001",
+        title: "Introductory Algebra Workshop",
+        teacher: "Jones",
+      }),
+    ],
+    prerequisites: [],
+    majors: [],
+  };
+}

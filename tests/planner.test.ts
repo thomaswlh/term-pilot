@@ -89,7 +89,7 @@ describe("planRequest", () => {
     const outcome = planRequest({ request, currentKeys, profile, catalogue });
     expect(outcome).toEqual({
       proposal: {
-        sectionKeys: expect.arrayContaining(["LEGAL:002", "NET:001"]),
+        sectionKeys: expect.arrayContaining(["LEGAL:002", "NET:002"]),
         droppedWishes: [],
         warnings: [],
         summary: expect.any(String),
@@ -98,7 +98,7 @@ describe("planRequest", () => {
     expect(outcome.proposal).not.toBeNull();
     expect(outcome.proposal!.sectionKeys).toHaveLength(2);
     expect(outcome.proposal!.sectionKeys).not.toContain("LEGAL:001");
-    expect(outcome.proposal!.summary).toMatch(/NET:001/);
+    expect(outcome.proposal!.summary).toMatch(/NET:002/);
     expect(outcome.proposal!.summary).toMatch(/LEGAL:001/);
   });
 
@@ -366,7 +366,7 @@ describe("planRequest", () => {
     const catalogue = baseFixtureCatalogue();
     const sections = catalogue.sections.map((s) =>
       sectionKey(s) === "NET:002"
-        ? { ...s, title: "Switching networks lab exercise" }
+        ? { ...s, title: "Switching networks exercise" }
         : s,
     );
     const labOnly = makeSection({

@@ -68,8 +68,7 @@ describe("GET /api/search", () => {
     expect(res.status).toBe(200);
     const data = (await res.json()) as { hits: Array<Record<string, unknown>> };
     expect(Array.isArray(data.hits)).toBe(true);
-    expect(data.hits.length).toBeGreaterThan(0);
-    expect(data.hits.length).toBeLessThanOrEqual(20);
+    expect(data.hits.length).toBe(20);
 
     const hit = data.hits[0];
     expect(hit).toHaveProperty("sectionKey");
@@ -86,22 +85,28 @@ describe("GET /api/search", () => {
     expect(Array.isArray(hit.meetings)).toBe(true);
     expect(Array.isArray(hit.prerequisites)).toBe(true);
 
-    expect(data.hits.length).toBe(2);
-    for (const mathHit of data.hits) {
+    expect(data.hits[0]?.sectionKey).toBe("MATH1001:001");
+    expect(data.hits[1]?.sectionKey).toBe("MATH1001:002");
+
+    const byKey = new Map(data.hits.map((h) => [h.sectionKey as string, h]));
+    const math001 = byKey.get("MATH1001:001");
+    const math002 = byKey.get("MATH1001:002");
+    expect(math001).toBeDefined();
+    expect(math002).toBeDefined();
+    for (const mathHit of [math001!, math002!]) {
       expect(mathHit.courseCode).toBe("MATH1001");
       assertEnrichedHit(mathHit);
       expect((mathHit.prerequisites as unknown[]).length).toBe(0);
     }
 
-    const bySection = new Map(data.hits.map((h) => [h.section as string, h]));
-    expect(bySection.get("001")?.teacher).toBe("JIN XIAO QING");
-    expect(bySection.get("002")?.teacher).toBe("SUN HAIWEI");
-    expect(bySection.get("001")?.notes).toBe("");
-    expect(bySection.get("001")?.restriction).toBe("");
-    expect(bySection.get("002")?.notes).toBe("");
-    expect(bySection.get("002")?.restriction).toBe("");
+    expect(math001?.teacher).toBe("JIN XIAO QING");
+    expect(math002?.teacher).toBe("SUN HAIWEI");
+    expect(math001?.notes).toBe("");
+    expect(math001?.restriction).toBe("");
+    expect(math002?.notes).toBe("");
+    expect(math002?.restriction).toBe("");
 
-    const meetings001 = (bySection.get("001")?.meetings as SearchMeeting[]).map((m) => ({
+    const meetings001 = (math001?.meetings as SearchMeeting[]).map((m) => ({
       day: m.day,
       start: m.startMinutes,
       end: m.endMinutes,
@@ -115,7 +120,7 @@ describe("GET /api/search", () => {
     );
     expect(meetings001).toHaveLength(3);
 
-    const meetings002 = (bySection.get("002")?.meetings as SearchMeeting[]).map((m) => ({
+    const meetings002 = (math002?.meetings as SearchMeeting[]).map((m) => ({
       day: m.day,
       start: m.startMinutes,
       end: m.endMinutes,
