@@ -1,0 +1,585 @@
+{
+  "depth": 10,
+  "model": {
+    "id": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "packageVersion": "4.3.2",
+    "dtype": "q8"
+  },
+  "courseTextHash": "128a761f3da7a137dcf43e684641f092ee3e285f2009455b1001908a9981aed7",
+  "latency": {
+    "bm25LegacyBuildMs": 2,
+    "bm25BuildMs": 5,
+    "denseLoadMs": 4725,
+    "embedBuildMs": 1481,
+    "queryMs": {
+      "bm25-legacy": [
+        2,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "bm25": [
+        5,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        3
+      ],
+      "dense": [
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "hybrid": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "queries": [
+    {
+      "id": "a1",
+      "category": "A",
+      "text": "linear algebra",
+      "runs": {
+        "bm25-legacy": [],
+        "bm25": [
+          "ISOM2005",
+          "MATH1001",
+          "ECEN2018",
+          "MATH2009"
+        ],
+        "dense": [
+          "MATH1001",
+          "ISOM2005",
+          "ECEN2018",
+          "MATH2009",
+          "MATH2000",
+          "MATH3011",
+          "PHYS1000",
+          "MATH2002",
+          "MATH1000",
+          "MATH2003"
+        ],
+        "hybrid": [
+          "ISOM2005",
+          "MATH1001",
+          "ECEN2018",
+          "MATH2009",
+          "MATH2000",
+          "MATH3011",
+          "PHYS1000",
+          "MATH2002",
+          "MATH1000",
+          "MATH2003"
+        ]
+      }
+    },
+    {
+      "id": "a2",
+      "category": "A",
+      "text": "calculus",
+      "runs": {
+        "bm25-legacy": [],
+        "bm25": [
+          "MATH0001",
+          "MATH2002",
+          "MATH1003"
+        ],
+        "dense": [
+          "MATH1003",
+          "MATH2002",
+          "MATH0001",
+          "MATH2000",
+          "EDUC2034",
+          "MATH2003",
+          "PHYS1000",
+          "MATH3000",
+          "MATH3026",
+          "EDUC2027"
+        ],
+        "hybrid": [
+          "MATH0001",
+          "MATH1003",
+          "MATH2002",
+          "MATH2000",
+          "EDUC2034",
+          "MATH2003",
+          "PHYS1000",
+          "MATH3000",
+          "MATH3026",
+          "EDUC2027"
+        ]
+      }
+    },
+    {
+      "id": "a3",
+      "category": "A",
+      "text": "japanese",
+      "runs": {
+        "bm25-legacy": [],
+        "bm25": [
+          "JAPN1004",
+          "JAPN1005",
+          "JAPN2000",
+          "JAPN2001",
+          "JAPN2002",
+          "JAPN2003",
+          "JAPN3000",
+          "JAPN4015",
+          "JAPN3002",
+          "JAPN4032"
+        ],
+        "dense": [
+          "JAPN1004",
+          "JAPN4032",
+          "JAPN2002",
+          "JAPN2001",
+          "JAPN1000",
+          "JAPN2003",
+          "JAPN3000",
+          "JAPN1005",
+          "JAPN4015",
+          "JAPN3002"
+        ],
+        "hybrid": [
+          "JAPN1004",
+          "JAPN2002",
+          "JAPN2001",
+          "JAPN1005",
+          "JAPN4032",
+          "JAPN2003",
+          "JAPN3000",
+          "JAPN2000",
+          "JAPN1000",
+          "JAPN4015"
+        ]
+      }
+    },
+    {
+      "id": "a4",
+      "category": "A",
+      "text": "statistics",
+      "runs": {
+        "bm25-legacy": [],
+        "bm25": [
+          "SOCY2001",
+          "GESB1013",
+          "ECON2000",
+          "ISOM2002",
+          "MATH2010",
+          "MATH4003",
+          "MATH3025",
+          "ECEN2018"
+        ],
+        "dense": [
+          "SOCY2001",
+          "GESB1013",
+          "MATH2010",
+          "MATH4003",
+          "MATH3025",
+          "ECON2000",
+          "ISOM2002",
+          "BECO2001",
+          "GEST1002",
+          "MATH2009"
+        ],
+        "hybrid": [
+          "SOCY2001",
+          "GESB1013",
+          "MATH2010",
+          "ECON2000",
+          "MATH4003",
+          "ISOM2002",
+          "MATH3025",
+          "ECEN2018",
+          "BECO2001",
+          "GEST1002"
+        ]
+      }
+    },
+    {
+      "id": "b1",
+      "category": "B",
+      "text": "ML",
+      "runs": {
+        "bm25-legacy": [],
+        "bm25": [],
+        "dense": [
+          "ISOM4008",
+          "MKTG4000",
+          "MGMT3008",
+          "MKTG4013",
+          "GESB1013",
+          "MKTG4011",
+          "IRTM3009",
+          "MKTG2000",
+          "ISOM4005",
+          "MATH1000"
+        ],
+        "hybrid": [
+          "ISOM4008",
+          "MKTG4000",
+          "MGMT3008",
+          "MKTG4013",
+          "GESB1013",
+          "MKTG4011",
+          "IRTM3009",
+          "MKTG2000",
+          "ISOM4005",
+          "MATH1000"
+        ]
+      }
+    },
+    {
+      "id": "b2",
+      "category": "B",
+      "text": "coding",
+      "runs": {
+        "bm25-legacy": [],
+        "bm25": [],
+        "dense": [
+          "CSCI1001",
+          "CIVL1000",
+          "ISOM3029",
+          "CSCI1004",
+          "ECEN1012",
+          "CSCI3012",
+          "ISOM2007",
+          "CSCI3026",
+          "COMM3017",
+          "CSCI4000"
+        ],
+        "hybrid": [
+          "CSCI1001",
+          "CIVL1000",
+          "ISOM3029",
+          "CSCI1004",
+          "ECEN1012",
+          "CSCI3012",
+          "ISOM2007",
+          "CSCI3026",
+          "COMM3017",
+          "CSCI4000"
+        ]
+      }
+    },
+    {
+      "id": "b3",
+      "category": "B",
+      "text": "stats",
+      "runs": {
+        "bm25-legacy": [],
+        "bm25": [],
+        "dense": [
+          "GESB1013",
+          "SOCY2001",
+          "MATH2010",
+          "MATH4003",
+          "ECON2000",
+          "ISOM2002",
+          "MATH3025",
+          "MATH2009",
+          "BECO2001",
+          "ISOM2007"
+        ],
+        "hybrid": [
+          "GESB1013",
+          "SOCY2001",
+          "MATH2010",
+          "MATH4003",
+          "ECON2000",
+          "ISOM2002",
+          "MATH3025",
+          "MATH2009",
+          "BECO2001",
+          "ISOM2007"
+        ]
+      }
+    },
+    {
+      "id": "b4",
+      "category": "B",
+      "text": "AI",
+      "runs": {
+        "bm25-legacy": [],
+        "bm25": [],
+        "dense": [
+          "CSCI3012",
+          "ISOM4008",
+          "CIVL1000",
+          "SOCY3019",
+          "GEST1006",
+          "ECON4001",
+          "LAWS1015",
+          "GEST1004",
+          "ISOM1005",
+          "ECON4007"
+        ],
+        "hybrid": [
+          "CSCI3012",
+          "ISOM4008",
+          "CIVL1000",
+          "SOCY3019",
+          "GEST1006",
+          "ECON4001",
+          "LAWS1015",
+          "GEST1004",
+          "ISOM1005",
+          "ECON4007"
+        ]
+      }
+    },
+    {
+      "id": "c1",
+      "category": "C",
+      "text": "CSCI 1004",
+      "runs": {
+        "bm25-legacy": [
+          "CSCI1000",
+          "CSCI1001",
+          "CSCI1002",
+          "CSCI2001",
+          "CSCI2003",
+          "CSCI2007",
+          "CSCI3007",
+          "CSCI3010",
+          "CSCI3011",
+          "CSCI3014"
+        ],
+        "bm25": [
+          "CSCI1004",
+          "LAWS1004",
+          "CIVL1004",
+          "JAPN1004",
+          "PHYS1004",
+          "CSCI4000",
+          "ENGL1004",
+          "HIST1004",
+          "GESB1004",
+          "CSCI3017"
+        ],
+        "dense": [
+          "CSCI1001",
+          "CSCI4000",
+          "CSCI1004",
+          "CSCI3012",
+          "CIVL1000",
+          "CSCI3017",
+          "CSCI1002",
+          "CSCI1000",
+          "CSCI3024",
+          "CSCI2001"
+        ],
+        "hybrid": [
+          "CSCI1004",
+          "CSCI4000",
+          "CSCI3017",
+          "CSCI1001",
+          "CSCI3024",
+          "CSCI3012",
+          "CIVL1004",
+          "CSCI1000",
+          "CSCI3023",
+          "CSCI2007"
+        ]
+      }
+    },
+    {
+      "id": "c2",
+      "category": "C",
+      "text": "GELH 1012",
+      "runs": {
+        "bm25-legacy": [
+          "GELH1000",
+          "GELH1001",
+          "GELH2002",
+          "GELH1012",
+          "GELH2005",
+          "GELH2008",
+          "GELH1010",
+          "GELH2001",
+          "GELH2004"
+        ],
+        "bm25": [
+          "GELH1012",
+          "GELH1000",
+          "GELH2001",
+          "GELH2002",
+          "GELH2005",
+          "GELH1001",
+          "GELH2004",
+          "GELH2008",
+          "GELH1010",
+          "TELC1012"
+        ],
+        "dense": [
+          "PHYS1000",
+          "GELH2001",
+          "PHYS1005",
+          "GELH1001",
+          "GELH1000",
+          "PHYS1004",
+          "JAPN1004",
+          "JAPN1000",
+          "GELH1012",
+          "MATH1000"
+        ],
+        "hybrid": [
+          "GELH2001",
+          "GELH1000",
+          "GELH1012",
+          "GELH1001",
+          "GELH2002",
+          "GELH2004",
+          "GELH2005",
+          "GEST1012",
+          "GESB1012",
+          "PHYS1000"
+        ]
+      }
+    },
+    {
+      "id": "c3",
+      "category": "C",
+      "text": "Haiwei Sun",
+      "runs": {
+        "bm25-legacy": [
+          "MATH1001",
+          "BMSC2001",
+          "CPED1000",
+          "CPED2001",
+          "EDUC2001",
+          "EDUC2034",
+          "EDUC3007",
+          "ENGL4001",
+          "FINC2001",
+          "FINC4008"
+        ],
+        "bm25": [
+          "MATH1001",
+          "EDUC2001",
+          "ENGL4001",
+          "GPAD4001",
+          "BMSC2001",
+          "CPED2001",
+          "GEGA2002",
+          "GEST1016",
+          "BECO2001",
+          "FINC2001"
+        ],
+        "dense": [
+          "CHLL1001",
+          "CHLL1006",
+          "CHLL2006",
+          "CHLL1007",
+          "CHLL2004",
+          "ENGL1002",
+          "CHLL2000",
+          "COMM2011",
+          "JAPN4015",
+          "EDUC3009"
+        ],
+        "hybrid": [
+          "MATH1001",
+          "EDUC3007",
+          "CHLL1001",
+          "CHLL1006",
+          "EDUC2001",
+          "CHLL2006",
+          "ENGL4001",
+          "CHLL1007",
+          "GPAD4001",
+          "BMSC2001"
+        ]
+      }
+    },
+    {
+      "id": "c4",
+      "category": "C",
+      "text": "CSCI1004:001",
+      "runs": {
+        "bm25-legacy": [
+          "EDUC4001",
+          "EDUC4002",
+          "EDUC4003",
+          "EDUC4004",
+          "EDUC4022",
+          "EDUC4023",
+          "EMEN3012"
+        ],
+        "bm25": [
+          "CSCI1004",
+          "LAWS1004",
+          "CSCI4000",
+          "CIVL1004",
+          "JAPN1004",
+          "PHYS1004",
+          "ENGL1004",
+          "HIST1004",
+          "GESB1004",
+          "CSCI3017"
+        ],
+        "dense": [
+          "CSCI1001",
+          "CSCI1002",
+          "CSCI1004",
+          "CSCI4000",
+          "CSCI3012",
+          "CSCI3017",
+          "CSCI1000",
+          "CSCI3024",
+          "CSCI3023",
+          "CSCI3011"
+        ],
+        "hybrid": [
+          "CSCI1004",
+          "CSCI4000",
+          "CSCI3017",
+          "CSCI1001",
+          "CSCI3024",
+          "CSCI3023",
+          "CSCI1000",
+          "CSCI1002",
+          "CSCI3012",
+          "CIVL1004"
+        ]
+      }
+    }
+  ]
+}

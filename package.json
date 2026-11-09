@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "retrieval:score": "tsx scripts/retrieval-score.ts"
+    "retrieval:score": "tsx scripts/retrieval-score.ts",
+    "retrieval:pool": "tsx scripts/retrieval-pool.ts"
   },
   "keywords": [],
   "author": "",
