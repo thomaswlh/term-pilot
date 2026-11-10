@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { buildSheet, poolDepthFor, sheetBlocksRewrite } from "../src/domain/retrieval/pool";
 
+const fusionBm25 = Array.from({ length: 50 }, (_, index) => `B${String(index).padStart(2, "0")}`);
+const fusionDense = Array.from({ length: 50 }, (_, index) => `D${String(index).padStart(2, "0")}`);
+
 const queries = [
   {
     id: "a1",
@@ -12,6 +15,7 @@ const queries = [
       dense: ["ISOM2005", "MATH1001"],
       hybrid: ["MATH1001"],
     },
+    fusionInputs: { bm25: fusionBm25, dense: fusionDense },
   },
 ];
 
@@ -36,6 +40,9 @@ describe("pool sheet", () => {
     expect(built.csv.split("\n")[0]).toBe(
       "queryId,category,query,courseCode,title,department,instructor,notes,proposedBy,label",
     );
+    expect(built.pool.queries[0]?.fusionInputs?.bm25).toHaveLength(50);
+    expect(built.pool.queries[0]?.runs.bm25).toHaveLength(2);
+    expect(built.csv).not.toContain("B49");
   });
 
   it("quotes a comma and turns a newline into a space", () => {

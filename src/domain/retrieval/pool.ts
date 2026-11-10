@@ -21,11 +21,14 @@ export type PoolLatency = {
   queryMs: Record<RunName, number[]>;
 };
 
+export type FusionInputs = { bm25: string[]; dense: string[] };
+
 export type PoolQuery = {
   id: string;
   category: string;
   text: string;
   runs: Record<RunName, string[]>;
+  fusionInputs?: FusionInputs;
 };
 
 export type PoolDocument = {
@@ -61,12 +64,21 @@ export function buildSheet(input: {
   courseTextHash: string;
   latency: PoolLatency;
 }): { depth: 5 | 10; csv: string; pool: PoolDocument } {
-  const queries = input.queries.map((query) => ({
-    id: query.id,
-    category: query.category,
-    text: query.text,
-    runs: cutRuns(query.runs, input.depth),
-  }));
+  const queries = input.queries.map((query) => {
+    const next: PoolQuery = {
+      id: query.id,
+      category: query.category,
+      text: query.text,
+      runs: cutRuns(query.runs, input.depth),
+    };
+    if (query.fusionInputs) {
+      next.fusionInputs = {
+        bm25: [...query.fusionInputs.bm25],
+        dense: [...query.fusionInputs.dense],
+      };
+    }
+    return next;
+  });
   const lines = [COLUMNS.join(",")];
   for (const query of queries) {
     const courseCodes = [...coursesInRuns(query.runs)].sort((left, right) => left.localeCompare(right));

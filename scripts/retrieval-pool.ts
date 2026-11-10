@@ -7,6 +7,7 @@ import { collapseCourses } from "../src/domain/retrieval/course-rank";
 import { courseEmbeddingText, courseFields } from "../src/domain/retrieval/course-text";
 import { FUSION_DEPTH, fuseCourses } from "../src/domain/retrieval/hybrid";
 import { EMBEDDING_MODEL } from "../src/domain/retrieval/model";
+import { calendarDate } from "../src/domain/retrieval/calendar-date";
 import {
   buildSheet,
   poolDepthFor,
@@ -113,6 +114,7 @@ async function runPool(): Promise<void> {
       category: query.category,
       text: query.text,
       runs: { "bm25-legacy": legacy, bm25: repaired, dense, hybrid },
+      fusionInputs: { bm25: repaired, dense },
     };
   });
 
@@ -135,7 +137,7 @@ async function runPool(): Promise<void> {
   writeAtomic(embeddingFile, `${JSON.stringify({ courseCodes, vectors: courseVectors })}\n`);
   writeAtomic(poolPath, `${JSON.stringify(built.pool, null, 2)}\n`);
   writeAtomic(sheetPath, built.csv.endsWith("\n") ? built.csv : `${built.csv}\n`);
-  recordUsage(usageEntry(new Date().toISOString().slice(0, 10)));
+  recordUsage(usageEntry(calendarDate(new Date(), "Asia/Macau")));
   console.log(`Wrote retrieval pool at depth ${built.depth}`);
 }
 
