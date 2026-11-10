@@ -1,7 +1,5 @@
 import path from "node:path";
-import { courseEmbeddingText } from "./course-text";
 import { EMBEDDING_MODEL } from "./model";
-import type { Catalogue } from "../types";
 import type { FeatureExtractionPipeline } from "@huggingface/transformers";
 
 export async function loadEmbedder(): Promise<FeatureExtractionPipeline> {
@@ -25,24 +23,4 @@ export async function embedTexts(
   const rows = output.tolist() as number[][];
   if (rows.length !== texts.length) throw new Error("Embedding row count does not match the input.");
   return rows;
-}
-
-export async function loadCourseVectors(
-  catalogue: Catalogue,
-  embedder: FeatureExtractionPipeline,
-) {
-  const byCourse = new Map<string, typeof catalogue.sections>();
-  for (const section of catalogue.sections) {
-    const list = byCourse.get(section.courseCode) ?? [];
-    list.push(section);
-    byCourse.set(section.courseCode, list);
-  }
-  const courses = [...byCourse.keys()].sort((a, b) => a.localeCompare(b));
-  const texts = courses.map((courseCode) => courseEmbeddingText(courseCode, byCourse.get(courseCode) ?? []));
-  const vectors = await embedTexts(embedder, texts);
-  return courses.map((courseCode, index) => ({
-    courseCode,
-    text: texts[index] ?? "",
-    vector: vectors[index] ?? [],
-  }));
 }

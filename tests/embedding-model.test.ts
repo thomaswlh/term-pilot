@@ -11,8 +11,10 @@ describe("EMBEDDING_MODEL", () => {
       pooling: "mean",
       normalize: true,
     });
-    const pkg = JSON.parse(fs.readFileSync("package.json", "utf8")) as { dependencies: Record<string, string> };
-    expect(pkg.dependencies["@huggingface/transformers"]).toBe("4.3.2");
+    const pkg = JSON.parse(fs.readFileSync("package.json", "utf8")) as {
+      devDependencies: Record<string, string>;
+    };
+    expect(pkg.devDependencies["@huggingface/transformers"]).toBe("4.3.2");
     expect(fs.readFileSync(".gitignore", "utf8")).toContain(".cache/");
     const source = fs.readFileSync("src/domain/retrieval/dense.ts", "utf8");
     expect(source).toContain('revision: EMBEDDING_MODEL.revision');
