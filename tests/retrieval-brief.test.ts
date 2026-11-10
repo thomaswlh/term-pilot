@@ -56,6 +56,11 @@ describe("renderBrief", () => {
     expect(brief.split("## Category C")[0]).toContain("No scored queries");
     expect(brief.split("## Category C")[1]).toContain("No scored queries");
     expect(brief).toContain("Unjudged courses are omitted before scoring.");
+    expect(brief).toContain("Precision@returned");
+    expect(brief).toContain("a1 bm25 returned=");
+    expect(brief).toContain("Category A bm25 Precision@returned mean=1 (n=1 queries)");
+    expect(brief).toContain("Recall@k counts relevant courses the run never returned.");
+    expect(brief).toContain("bm25-legacy keeps the frozen tokenizer");
     expect(brief).toContain("751bff37182d3f1213fa05d7196b954e230abad9");
     expect(brief).toContain("Package 4.3.2");
     expect(brief).toContain("Depth 10");

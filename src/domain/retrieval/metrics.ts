@@ -39,6 +39,22 @@ export function scoreCondensed(
   return { recall, mrr: reciprocal, ndcg: idcg === 0 ? 0 : dcg / idcg };
 }
 
+export function precisionAtReturned(
+  ranking: string[],
+  judgments: Map<string, "relevant" | "irrelevant">,
+  k: number,
+): { returned: number; precision: number } | null {
+  const returned = Math.min(k, ranking.length);
+  const top = ranking.slice(0, returned);
+  const judged = top.filter((code) => judgments.has(code));
+  if (judged.length === 0) return null;
+  const relevant = new Set(
+    [...judgments.entries()].filter(([, label]) => label === "relevant").map(([code]) => code),
+  );
+  const hits = judged.filter((code) => relevant.has(code)).length;
+  return { returned, precision: hits / judged.length };
+}
+
 function gain(label: "relevant" | "irrelevant"): number {
   return label === "relevant" ? 1 : 0;
 }

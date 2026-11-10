@@ -1,10 +1,15 @@
-import { scoreCondensed } from "./metrics";
+import { precisionAtReturned, scoreCondensed } from "./metrics";
 import { parseCsv, type PoolDocument } from "./pool";
 
 const RUNS = ["bm25-legacy", "bm25", "dense", "hybrid"] as const;
 const CATEGORIES = ["A", "B", "C"] as const;
-const LIMITATION =
-  "Unjudged courses are omitted before scoring. They are not given a gain of zero. Recall divides by the courses marked relevant. Courses outside the frozen pool are invisible. A run that returned nothing contributes no rows. Removing an unjudged row can move a judged course upward. These figures do not change searchSections.";
+const LIMITATION = [
+  "Unjudged courses are omitted before scoring. They are not given a gain of zero. Recall divides by the courses marked relevant. Courses outside the frozen pool are invisible. A run that returned nothing contributes no rows. Removing an unjudged row can move a judged course upward. These figures do not change searchSections.",
+  "Recall@k counts relevant courses the run never returned. Precision@returned scores only returned courses that carry a judgment. A shorter candidate list is a coverage difference, not automatically a worse ranking.",
+  "k follows poolDepthFor: 10 unless the deduped labeling sheet would exceed 240 rows, when k becomes 5.",
+  "bm25-legacy keeps the frozen tokenizer. On c4 (CSCI1004:001) its hits are instructor digit matches such as TBC_2026-1, not retrieval of that section.",
+  "c3 (Haiwei Sun) has one lexical instructor match (MATH1001). Dense top-10 in the frozen pool does not include it. Each category has four queries, so one degenerate query is 25% of a category mean.",
+].join(" ");
 
 type RunName = (typeof RUNS)[number];
 type Judgment = "relevant" | "irrelevant";
@@ -117,7 +122,7 @@ function renderCategory(
   excluded: string[],
 ): string[] {
   const lines = [`## Category ${category}`];
-  const scored: Array<{ id: string; scores: Record<RunName, Score> }> = [];
+  const scored: Array<{ id: string; scores: Record<RunName, Score>; labels: Map<string, Judgment> }> = [];
 
   for (const query of pool.queries) {
     if (query.category !== category) continue;
@@ -136,9 +141,10 @@ function renderCategory(
       excluded.push(query.id);
       continue;
     }
-    scored.push({ id: query.id, scores });
+    scored.push({ id: query.id, scores, labels });
     for (const run of RUNS) {
       lines.push(metricLine(`${query.id} ${run}`, scores[run], pool.depth));
+      lines.push(precisionLine(`${query.id} ${run}`, query.runs[run], labels, pool.depth));
     }
     const baseline = scores.bm25;
     for (const run of ["dense", "hybrid", "bm25-legacy"] as const) {
@@ -166,12 +172,37 @@ function renderCategory(
         pool.depth,
       ),
     );
+    const precisions = scored
+      .map((item) => precisionAtReturned(pool.queries.find((q) => q.id === item.id)!.runs[run], item.labels, pool.depth))
+      .filter((value): value is { returned: number; precision: number } => value !== null);
+    if (precisions.length === 0) {
+      lines.push(`Category ${category} ${run} Precision@returned=n/a (n=0 queries)`);
+    } else {
+      lines.push(
+        `Category ${category} ${run} Precision@returned mean=${formatMetric(
+          mean(precisions.map((value) => value.precision)),
+        )} (n=${precisions.length} queries)`,
+      );
+    }
   }
   return lines;
 }
 
 function metricLine(prefix: string, score: Score, k: number): string {
   return `${prefix} Recall@${k}=${formatMetric(score.recall)} MRR=${formatMetric(score.mrr)} nDCG=${formatMetric(score.ndcg)}`;
+}
+
+function precisionLine(
+  prefix: string,
+  ranking: string[],
+  judgments: Map<string, Judgment>,
+  k: number,
+): string {
+  const scored = precisionAtReturned(ranking, judgments, k);
+  if (scored === null) {
+    return `${prefix} returned=${Math.min(k, ranking.length)} Precision@returned=n/a`;
+  }
+  return `${prefix} returned=${scored.returned} Precision@returned=${formatMetric(scored.precision)}`;
 }
 
 function countCoverage(

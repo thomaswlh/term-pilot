@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { scoreCondensed } from "../../src/domain/retrieval/metrics";
+import { precisionAtReturned, scoreCondensed } from "../../src/domain/retrieval/metrics";
 
 describe("scoreCondensed", () => {
   it("drops an unjudged course instead of treating it as irrelevant", () => {
@@ -33,5 +33,17 @@ describe("scoreCondensed", () => {
   it("returns null when the query has no relevant mark", () => {
     const judgments = new Map<string, "relevant" | "irrelevant">([["I", "irrelevant"]]);
     expect(scoreCondensed(["I"], judgments, 10)).toBeNull();
+  });
+});
+
+describe("precisionAtReturned", () => {
+  it("separates coverage from precision on a short ranked list", () => {
+    const judgments = new Map<string, "relevant" | "irrelevant">([
+      ["A", "relevant"],
+      ["B", "relevant"],
+      ["C", "relevant"],
+    ]);
+    expect(scoreCondensed(["A"], judgments, 10)?.recall).toBeCloseTo(1 / 3);
+    expect(precisionAtReturned(["A"], judgments, 10)).toEqual({ returned: 1, precision: 1 });
   });
 });
