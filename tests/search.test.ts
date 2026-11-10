@@ -183,6 +183,21 @@ describe("repaired searchSections", () => {
     expect(searchSections(catalogue, "13:00").map((hit) => hit.sectionKey)).toEqual(["MEET1000:001"]);
   });
 
+  it("does not match 13:00 against a meeting that only shares hour and minute tokens", () => {
+    const catalogue: Catalogue = {
+      sections: [
+        fixtureSection({
+          courseCode: "SPLIT",
+          section: "001",
+          meetings: [{ day: "MON", startMinutes: 9 * 60 + 13, endMinutes: 10 * 60 }],
+        }),
+      ],
+      prerequisites: [],
+      majors: [],
+    };
+    expect(searchSections(catalogue, "13:00").map((hit) => hit.sectionKey)).toEqual([]);
+  });
+
   it("returns only the 13:00 section when other meetings share an hour or a minute", () => {
     const catalogue: Catalogue = {
       sections: [
