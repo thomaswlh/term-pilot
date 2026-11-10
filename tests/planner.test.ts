@@ -366,7 +366,7 @@ describe("planRequest", () => {
     const catalogue = baseFixtureCatalogue();
     const sections = catalogue.sections.map((s) =>
       sectionKey(s) === "NET:002"
-        ? { ...s, title: "Switching networks exercise" }
+        ? { ...s, title: "Switching networks lab exercise" }
         : s,
     );
     const labOnly = makeSection({
@@ -393,5 +393,26 @@ describe("planRequest", () => {
     expect(s).toMatch(/added .*net:002/);
     expect(s).toMatch(/removed .*legal:001/);
     expect(s).toMatch(/dropped wishes:.*lab/);
+  });
+
+  it("does not satisfy a topic from a title-only search hit", () => {
+    const catalogue = makeCatalogue([
+      makeSection({
+        courseCode: "NET",
+        section: "002",
+        title: "Switching lab exercise",
+        meetings: [{ day: "MON", startMinutes: 10 * 60, endMinutes: 11 * 60 }],
+      }),
+    ]);
+    const outcome = planRequest({
+      request: { topics: ["LAB"], keep: [], drop: [], avoid: [] },
+      currentKeys: [],
+      profile,
+      catalogue,
+    });
+    expect(outcome).toEqual({
+      proposal: null,
+      reason: expect.stringMatching(/No sections found for LAB/i),
+    });
   });
 });

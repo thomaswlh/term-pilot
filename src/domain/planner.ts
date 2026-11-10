@@ -1,5 +1,5 @@
 import { sectionKey, timedMeetings } from "./section";
-import { searchSections } from "./search";
+import { searchSections, type SearchHit } from "./search";
 import { ruleSentence, validateSections, type RuleFailure, type RuleWarning } from "./rules";
 import type { Catalogue, Day, Section } from "./types";
 
@@ -12,6 +12,39 @@ export type PlanDraft = {
   summary: string;
 };
 export type PlanOutcome = { proposal: PlanDraft } | { proposal: null; reason: string };
+
+const TOPIC_TOKEN_RE = /[a-z0-9]+(?::[0-9]{2,3})?/g;
+
+function topicTokens(topic: string): string[] {
+  return topic.toLowerCase().match(TOPIC_TOKEN_RE) ?? [];
+}
+
+function courseCodePrefix(courseCode: string): string {
+  const match = courseCode.match(/^[A-Za-z]+/);
+  return match ? match[0].toLowerCase() : "";
+}
+
+function instructorTokens(teacher: string): string[] {
+  return teacher.toLowerCase().match(TOPIC_TOKEN_RE) ?? [];
+}
+
+function hitMatchesTopicIdentity(hit: SearchHit, topicTokenSet: Set<string>): boolean {
+  if (topicTokenSet.has(hit.courseCode.toLowerCase())) return true;
+  if (topicTokenSet.has(hit.sectionKey.toLowerCase())) return true;
+  const prefix = courseCodePrefix(hit.courseCode);
+  if (prefix.length > 0 && topicTokenSet.has(prefix)) return true;
+  for (const token of instructorTokens(hit.teacher)) {
+    if (topicTokenSet.has(token)) return true;
+  }
+  return false;
+}
+
+function eligibleTopicHits(hits: SearchHit[], topic: string): SearchHit[] {
+  const tokens = topicTokens(topic);
+  if (tokens.length === 0) return [];
+  const topicTokenSet = new Set(tokens);
+  return hits.filter((hit) => hitMatchesTopicIdentity(hit, topicTokenSet));
+}
 
 function catalogueHasKey(catalogue: Catalogue, key: string): boolean {
   return catalogue.sections.some((s) => sectionKey(s) === key);
@@ -123,7 +156,7 @@ export function planRequest(input: {
   const droppedWishes: string[] = [];
 
   for (const topic of topics) {
-    const hits = searchSections(catalogue, topic, 10);
+    const hits = eligibleTopicHits(searchSections(catalogue, topic, 10), topic);
     if (hits.length === 0) {
       return { proposal: null, reason: `No sections found for ${topic}.` };
     }
