@@ -12,6 +12,7 @@ import {
   ClockIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { statusLine, type CourseRecord } from "@/domain/academic";
 import { theme } from "@/domain/theme";
 import type { Section } from "@/domain/types";
 import {
@@ -21,6 +22,7 @@ import {
   type CourseGroup,
   type FitStatus,
   type SearchHitDetail,
+  type SectionFitContext,
 } from "@/domain/course-group";
 
 export type CourseSearchPanelProps = {
@@ -33,6 +35,7 @@ export type CourseSearchPanelProps = {
   savedSections: Section[];
   savedKeys: string[];
   majorCode: string | null;
+  fitContext?: SectionFitContext;
   openProposal: boolean;
   hoveredKey: string | null;
   onHoverKey: (key: string | null) => void;
@@ -45,6 +48,7 @@ export type CourseSearchPanelProps = {
   noticeTone?: "error" | "info";
   focusNonce: number;
   activeFilter?: "all" | "fits" | "major";
+  courses?: CourseRecord[];
 };
 
 function formatPrerequisites(hit: SearchHitDetail): string | null {
@@ -63,6 +67,7 @@ function getHiddenFilterMessage(
   savedSections: Section[],
   savedKeys: string[],
   majorCode: string | null,
+  fitContext: SectionFitContext,
   isPinnedInFiltered: boolean,
 ): string | null {
   if (!pinnedHit || isPinnedInFiltered) return null;
@@ -70,9 +75,17 @@ function getHiddenFilterMessage(
     return `This section is hidden by Major Eligible because it is not for ${majorCode ?? ""}.`;
   }
   if (filter === "fits") {
-    const fit = evaluateSectionFit(pinnedHit, savedSections, savedKeys, null);
-    const code = fit.status === "overlap" ? fit.conflictingCourseCode : "";
-    return `This section is hidden by Fits Schedule because it overlaps ${code}.`;
+    const fit = evaluateSectionFit(pinnedHit, savedSections, savedKeys, majorCode, fitContext);
+    if (fit.status === "duplicate") {
+      return `This section is hidden by Fits Schedule because you are already taking ${fit.courseCode}.`;
+    }
+    if (fit.status === "overlap") {
+      return `This section is hidden by Fits Schedule because it overlaps ${fit.conflictingCourseCode}.`;
+    }
+    if (fit.status === "restriction" || fit.status === "unverified") {
+      return `This section is hidden by Fits Schedule because ${fit.label}`;
+    }
+    return null;
   }
   return null;
 }
@@ -103,6 +116,7 @@ export function CourseSearchPanel({
   savedSections,
   savedKeys,
   majorCode,
+  fitContext = { yearOfStudy: null, known: { majors: [], programmes: [], specializations: [] } },
   openProposal,
   hoveredKey,
   onHoverKey,
@@ -115,6 +129,7 @@ export function CourseSearchPanel({
   noticeTone = "error",
   focusNonce,
   activeFilter = "all",
+  courses = [],
 }: CourseSearchPanelProps) {
   const [filter, setFilter] = useState<QuickFilter>(activeFilter);
   const [prevActiveFilter, setPrevActiveFilter] = useState(activeFilter);
@@ -165,8 +180,16 @@ export function CourseSearchPanel({
     });
   }, []);
   const rawGroups = groupHitsByCourse(hits);
-  const filteredGroups = filterCourseGroups(rawGroups, filter, savedSections, savedKeys, majorCode);
+  const filteredGroups = filterCourseGroups(rawGroups, filter, savedSections, savedKeys, majorCode, fitContext);
   const pinnedHit = pinnedKey ? hits.find((h) => h.sectionKey === pinnedKey) ?? null : null;
+  const pinnedFit = pinnedHit
+    ? evaluateSectionFit(pinnedHit, savedSections, savedKeys, majorCode, fitContext)
+    : null;
+  const pinnedAddBlocked =
+    pinnedFit?.status === "overlap" ||
+    pinnedFit?.status === "restriction" ||
+    pinnedFit?.status === "unverified" ||
+    pinnedFit?.status === "duplicate";
   const courseGroup = pinnedHit ? rawGroups.find((g) => g.courseCode === pinnedHit.courseCode) ?? null : null;
   const pinnedSiblings = courseGroup ? courseGroup.sections : (pinnedHit ? [pinnedHit] : []);
   const pinnedIndex = pinnedHit ? pinnedSiblings.findIndex((section) => section.sectionKey === pinnedHit.sectionKey) : -1;
@@ -180,6 +203,7 @@ export function CourseSearchPanel({
     savedSections,
     savedKeys,
     majorCode,
+    fitContext,
     isPinnedInFiltered,
   );
 
@@ -351,6 +375,7 @@ export function CourseSearchPanel({
             color: noticeTone === "error" ? theme.rose : theme.muted,
             fontSize: 12.5,
             lineHeight: 1.4,
+            whiteSpace: "pre-line",
           }}
         >
           {notice}
@@ -506,6 +531,7 @@ export function CourseSearchPanel({
             const isExpanded = expandedCourses.has(group.courseCode);
             const sectionsPanelId = `course-sections-${group.courseCode}`;
             const isHovered = hoveredCourse === group.courseCode;
+            const reported = courses.find((course) => course.courseCode === group.courseCode);
 
             return (
               <article
@@ -563,7 +589,7 @@ export function CourseSearchPanel({
                           fontVariantNumeric: "tabular-nums",
                         }}
                       >
-                        {group.credits} credits · {group.sections.length}{" "}
+                        {group.creditsLabel} · {group.sections.length}{" "}
                         {group.sections.length === 1 ? "section" : "sections"}
                       </span>
                       <ChevronDownIcon
@@ -590,6 +616,19 @@ export function CourseSearchPanel({
                   >
                     {group.title}
                   </div>
+                  {reported ? (
+                    <div
+                      style={{
+                        marginTop: 4,
+                        fontSize: 12,
+                        fontWeight: 500,
+                        color: theme.muted,
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {statusLine(reported.status, reported.recognizesPrerequisite)}
+                    </div>
+                  ) : null}
                 </button>
 
                 {isExpanded ? (
@@ -603,12 +642,16 @@ export function CourseSearchPanel({
                     }}
                   >
                     {group.sections.map((section, idx) => {
-                  const fit = evaluateSectionFit(section, savedSections, savedKeys, majorCode);
+                  const fit = evaluateSectionFit(section, savedSections, savedKeys, majorCode, fitContext);
                   const isHovered = hoveredKey === section.sectionKey;
                   const isPinned = pinnedKey === section.sectionKey;
                   const isAdded = fit.status === "added";
                   const isBusy = busyKey === section.sectionKey;
-                  const conflict = fit.status === "overlap" || fit.status === "restriction";
+                  const conflict =
+                    fit.status === "overlap" ||
+                    fit.status === "restriction" ||
+                    fit.status === "unverified" ||
+                    fit.status === "duplicate";
 
                   return (
                     <div
@@ -769,7 +812,12 @@ export function CourseSearchPanel({
 
           <Button
             type="button"
-            disabled={savedKeys.includes(pinnedHit.sectionKey) || openProposal || busyKey === pinnedHit.sectionKey}
+            disabled={
+              pinnedAddBlocked ||
+              savedKeys.includes(pinnedHit.sectionKey) ||
+              openProposal ||
+              busyKey === pinnedHit.sectionKey
+            }
             onClick={() => onAddSection(pinnedHit)}
             style={{
               width: "100%",
@@ -811,7 +859,7 @@ function renderFitBadge(fit: FitStatus) {
       </span>
     );
   }
-  if (fit.status === "overlap" || fit.status === "restriction") {
+  if (fit.status === "overlap" || fit.status === "restriction" || fit.status === "duplicate") {
     return (
       <span
         style={{
@@ -820,6 +868,23 @@ function renderFitBadge(fit: FitStatus) {
           background: "#FBEAE9",
           color: theme.rose,
           border: "1px solid #F4C7C3",
+          borderRadius: 4,
+          padding: "1px 6px",
+        }}
+      >
+        {fit.label}
+      </span>
+    );
+  }
+  if (fit.status === "unverified") {
+    return (
+      <span
+        style={{
+          fontSize: 11,
+          fontWeight: 600,
+          background: "#F7F0E4",
+          color: "#6B4E16",
+          border: "1px solid #E8D5B5",
           borderRadius: 4,
           padding: "1px 6px",
         }}

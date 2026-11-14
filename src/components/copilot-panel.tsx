@@ -8,19 +8,12 @@ import { AssistantMarkdown } from "@/components/ai/markdown";
 import { AssistantMessage, UserMessage } from "@/components/ai/message";
 import { PromptInput } from "@/components/ai/prompt-input";
 import { Tool } from "@/components/ai/tool";
+import { planToolView, toolTitle } from "@/components/plan-tool-state";
 import { Button } from "@/components/ui/button";
 import { theme } from "@/domain/theme";
 
 const UNAVAILABLE = "The assistant is unavailable. Search and manual add still work.";
 const RUN_STOPPED_MESSAGE = "Run stopped by user";
-
-const TOOL_TITLES: Record<string, string> = {
-  searchSections: "Searched the catalogue",
-  readProfile: "Read the profile",
-  readTimetable: "Read this timetable",
-  plan: "Drafted a proposal",
-  validate: "Checked the rules",
-};
 
 type ThreadMessage = {
   id: string;
@@ -43,26 +36,6 @@ function textOf(content: unknown): string {
     })
     .filter(Boolean)
     .join("");
-}
-
-function proposalFrom(content: unknown): { proposalId: string; summary: string } | { proposalId: null; reason: string } | null {
-  const raw = textOf(content);
-  if (!raw) return null;
-  try {
-    const data: unknown = JSON.parse(raw);
-    if (typeof data !== "object" || data === null || !("proposalId" in data)) return null;
-    const row = data as { proposalId?: unknown; summary?: unknown; reason?: unknown };
-    if (typeof row.proposalId === "string" && row.proposalId) {
-      const summary = typeof row.summary === "string" && row.summary.trim() ? row.summary : "Open this proposal";
-      return { proposalId: row.proposalId, summary };
-    }
-    if (row.proposalId === null && typeof row.reason === "string") {
-      return { proposalId: null, reason: row.reason };
-    }
-  } catch {
-    return null;
-  }
-  return null;
 }
 
 export function CopilotPanel({
@@ -201,25 +174,22 @@ function CopilotThread({
               <AssistantMessage>
                 {calls.map((call) => {
                   const result = toolResults.get(call.id);
-                  const proposal = result ? proposalFrom(result.content) : null;
-                  const title = TOOL_TITLES[call.function.name] ?? call.function.name;
-                  const failed = Boolean(result?.error) || proposal?.proposalId === null;
-                  const detail =
-                    proposal && proposal.proposalId === null
-                      ? proposal.reason
-                      : result
-                        ? null
-                        : null;
+                  const running = !result;
+                  const errored = Boolean(result?.error);
+                  const view = planToolView(errored ? result?.error : textOf(result?.content), errored);
+                  const proposalId = view.proposalId;
+                  const phase = running ? "running" : view.failed ? "failed" : "done";
+                  const title = toolTitle(call.function.name, phase, view);
                   return (
                     <div key={call.id} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                      <Tool title={failed && call.function.name === "plan" ? "Could not draft a proposal" : title} failed={failed}>
-                        {detail ? <p style={{ margin: 0 }}>{detail}</p> : null}
+                      <Tool title={title} running={running} failed={view.failed}>
+                        {view.detail ? <p style={{ margin: 0 }}>{view.detail}</p> : null}
                       </Tool>
-                      {proposal && proposal.proposalId ? (
+                      {proposalId ? (
                         <ProposalButton
-                          summary={proposal.summary}
-                          pressed={proposal.proposalId === selectedId}
-                          onClick={() => onOpenProposal(proposal.proposalId)}
+                          summary={view.summary ?? "Open this proposal"}
+                          pressed={proposalId === selectedId}
+                          onClick={() => onOpenProposal(proposalId)}
                           onHideProposal={onHideProposal}
                         />
                       ) : null}

@@ -73,6 +73,46 @@ describe("searchSections", () => {
     expect(hits.some((hit) => hit.sectionKey === "GELH1012:001")).toBe(true);
   });
 
+  it("includes the section unit and department on a hit", () => {
+    const hits = searchSections(catalogue, "GELH1012");
+    const hit = hits.find((row) => row.sectionKey === "GELH1012:001");
+    expect(hit).toMatchObject({ unit: "FAH", department: "DAD" });
+  });
+
+  it("returns planning fields on hits", () => {
+    const planning: Catalogue = {
+      sections: [
+        fixtureSection({
+          courseCode: "GELH1012",
+          section: "001",
+          title: "Art Appreciation",
+          courseType: "GE Course",
+          restriction: "CLASS FOR CLL19",
+          meetings: [{ day: "TUE", startMinutes: 13 * 60, endMinutes: 14 * 60 + 15 }],
+        }),
+        fixtureSection({
+          courseCode: "NOPE1000",
+          section: "001",
+          title: "Unknown Credits",
+        }),
+      ],
+      prerequisites: [],
+      majors: [], specializations: [],
+    };
+
+    expect(searchSections(planning, "GELH1012", 10)[0]).toMatchObject({
+      courseCode: "GELH1012",
+      courseType: "GE Course",
+      credits: 3,
+      meetings: ["TUE 13:00-14:15"],
+      restriction: "CLASS FOR CLL19",
+    });
+    expect(searchSections(planning, "NOPE1000", 10)[0]).toMatchObject({
+      courseCode: "NOPE1000",
+      credits: null,
+    });
+  });
+
   it("includes ENGL4000:001 even when the section has no timed meeting", () => {
     const hits = searchSections(catalogue, "ENGL4000");
     expect(hits.some((hit) => hit.sectionKey === "ENGL4000:001")).toBe(true);
@@ -91,6 +131,7 @@ describe("searchSections", () => {
           courseCode: "TEST101",
           section: "001",
           title: "Introductory Algebra Workshop",
+          courseType: "",
           unit: "3",
           department: "MATH",
           teacher: "Jones",
@@ -100,7 +141,7 @@ describe("searchSections", () => {
         },
       ],
       prerequisites: [],
-      majors: [],
+      majors: [], specializations: [],
     };
 
     expect(searchSections(tiny, "quantumcomputingzephyr")).toEqual([]);
@@ -133,6 +174,7 @@ describe("searchSections", () => {
 function fixtureSection(partial: Pick<Section, "courseCode" | "section"> & Partial<Section>): Section {
   return {
     title: "",
+    courseType: "",
     unit: "",
     department: "",
     teacher: "",
@@ -151,7 +193,7 @@ describe("repaired searchSections", () => {
         fixtureSection({ courseCode: "CSCI1004", section: "001", title: "Introduction to Computer Science" }),
       ],
       prerequisites: [],
-      majors: [],
+      majors: [], specializations: [],
     };
     expect(searchSections(catalogue, "CSCI 1004")[0]?.sectionKey).toBe("CSCI1004:001");
   });
@@ -163,7 +205,7 @@ describe("repaired searchSections", () => {
         fixtureSection({ courseCode: "CSCI1004", section: "001", title: "Introduction to Computer Science" }),
       ],
       prerequisites: [],
-      majors: [],
+      majors: [], specializations: [],
     };
     expect(searchSections(catalogue, "CSCI1004:001")[0]?.sectionKey).toBe("CSCI1004:001");
   });
@@ -178,7 +220,7 @@ describe("repaired searchSections", () => {
         }),
       ],
       prerequisites: [],
-      majors: [],
+      majors: [], specializations: [],
     };
     expect(searchSections(catalogue, "13:00").map((hit) => hit.sectionKey)).toEqual(["MEET1000:001"]);
   });
@@ -193,7 +235,7 @@ describe("repaired searchSections", () => {
         }),
       ],
       prerequisites: [],
-      majors: [],
+      majors: [], specializations: [],
     };
     expect(searchSections(catalogue, "13:00").map((hit) => hit.sectionKey)).toEqual([]);
   });
@@ -218,7 +260,7 @@ describe("repaired searchSections", () => {
         }),
       ],
       prerequisites: [],
-      majors: [],
+      majors: [], specializations: [],
     };
     expect(searchSections(catalogue, "13:00").map((hit) => hit.sectionKey)).toEqual(["START:001"]);
   });
@@ -246,6 +288,6 @@ function algebraCatalogue(): Catalogue {
       }),
     ],
     prerequisites: [],
-    majors: [],
+    majors: [], specializations: [],
   };
 }

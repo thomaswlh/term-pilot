@@ -1,0 +1,3422 @@
+[
+  {
+    "courseCode": "ACCT1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ACCT2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ACCT2004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT2004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ACCT3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ACCT3004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT3004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ACCT3005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT3005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ACCT3006",
+    "credits": 1.5,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT3006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ACCT3007",
+    "credits": 1.5,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT3007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ACCT4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ACCT4007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT4007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ACCT4009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT4009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ACCT4010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ACCT4010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BECO1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BECO1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BECO1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BECO1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BECO2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BECO2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BECO2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BECO2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BECO3008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BECO3008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BECO4003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BECO4003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BECO4007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BECO4007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BECO4015",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BECO4015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BIOS3006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BIOS3006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BIOS3017",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BIOS3017",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BIOS4012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BIOS4012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC1001",
+    "credits": 2,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC1002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC1002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC1007",
+    "credits": 4,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC1007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC1008",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC1008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC2001",
+    "credits": 1.5,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC2003",
+    "credits": 1.5,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC3001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC3001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC3003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC3003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC4001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "BMSC4002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=BMSC4002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHEM2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHEM2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHEM2006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHEM2006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHEM3008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHEM3008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL1003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL1003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL1006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL1006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL1007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL1007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL2004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL2004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL2006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL2006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL3005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL3005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL4001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL4004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL4004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CHLL4006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CHLL4006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL1002",
+    "credits": 2,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL1002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL1004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL1004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL1005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL1005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL2002",
+    "credits": 2,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL3001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL3001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL3005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL3005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL3007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL3007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL3008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL3008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL4005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL4005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CIVL4019",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CIVL4019",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM2005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM2005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM2006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM2006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM2007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM2007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM2011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM2011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM2012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM2012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM2013",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM2013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM3003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM3003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM3015",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM3015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM3017",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM3017",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM3020",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM3020",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM3026",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM3026",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM3027",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM3027",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM3028",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM3028",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM4003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM4003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM4007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM4007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM4009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM4009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM4010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM4010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "COMM4011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=COMM4011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CPED1000",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CPED1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CPED1001",
+    "credits": 0.5,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CPED1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CPED1002",
+    "credits": 0.5,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CPED1002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CPED2001",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CPED2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI1002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI1002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI1004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI1004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI2007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI2007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3014",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3014",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3015",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3017",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3017",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3018",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3018",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3023",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3023",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3024",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3024",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3026",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3026",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3028",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3028",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI3029",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI3029",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "CSCI4000",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CSCI4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN1001",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN1008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN1008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN1011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN1011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN1012",
+    "credits": 4,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN1012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN2017",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN2017",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN2018",
+    "credits": 4,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN2018",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN3002",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN3003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN3003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN3008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN3008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN3009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN3009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN3012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN3012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN3020",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN3020",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN3024",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN3024",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECEN4006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECEN4006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON1002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON1002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON2004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON2004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON3001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON3001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON3007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON3007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON3009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON3009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON4001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON4005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON4005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON4007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON4007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ECON4014",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ECON4014",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC1011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC1011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC1013",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC1013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC1015",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC1015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC1016",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC1016",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC1023",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC1023",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC1047",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC1047",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC1054",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC1054",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC1060",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC1060",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2018",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2018",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2022",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2022",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2023",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2023",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2025",
+    "credits": 2,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2025",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2027",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2027",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2034",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2034",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2035",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2035",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2038",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2038",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2044",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2044",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC2050",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC2050",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3013",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3020",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3020",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3021",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3021",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3026",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3026",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3037",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3037",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3040",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3040",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3047",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3047",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3050",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3050",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC3056",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC3056",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC4001",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC4002",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC4002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC4003",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC4003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC4004",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC4004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC4022",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC4022",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EDUC4023",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EDUC4023",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EELC1008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EELC1008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EELC1011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EELC1011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EELC1012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EELC1012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EELC1013",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EELC1013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN1001",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN3001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN3001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN3010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN3010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN3012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN3012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN3015",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN3015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN3025",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN3025",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN3030",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN3030",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN3041",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN3041",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "EMEN4000",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=EMEN4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL1002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL1002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL1003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL1003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL1004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL1004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL1006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL1006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL2004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL2004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL2006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL2006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL3001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL3001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL3014",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL3014",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL3021",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL3021",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL3024",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL3024",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL3029",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL3029",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL3030",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL3030",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL3041",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL3041",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL3044",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL3044",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGL4001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGL4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ENGR3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ENGR3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "FINC2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=FINC2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "FINC2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=FINC2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "FINC2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=FINC2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "FINC3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=FINC3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "FINC3001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=FINC3001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "FINC4001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=FINC4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "FINC4008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=FINC4008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "FINC4009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=FINC4009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "FINC4011",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=FINC4011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "FINC4012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=FINC4012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "FINC4013",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=FINC4013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEGA1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEGA1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEGA1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEGA1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEGA1003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEGA1003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEGA1006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEGA1006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEGA1008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEGA1008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEGA1010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEGA1010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEGA2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEGA2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEGA2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEGA2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEGA2008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEGA2008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GELH1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GELH1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GELH1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GELH1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GELH1010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GELH1010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GELH1012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GELH1012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GELH2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GELH2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GELH2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GELH2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GELH2004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GELH2004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GELH2005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GELH2005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GELH2008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GELH2008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1001",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1002",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1003",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1013",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1015",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1017",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1017",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1018",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1018",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1019",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1019",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB1020",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1020",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB2004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB2004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GESB2009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB2009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1014",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1014",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1015",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1016",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1016",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1017",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1017",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST1019",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST1019",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GEST2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GEST2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD1002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD1002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD2012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD2012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD2015",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD2015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD3003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD3003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD3005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD3005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD3006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD3006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD3007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD3007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD3010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD3010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD3022",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD3022",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD3023",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD3023",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD3031",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD3031",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD4001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD4002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD4002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD4003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD4003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD4005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD4005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD4007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD4007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "GPAD4018",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GPAD4018",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST1004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST1004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST1009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST1009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST2008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST2008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST2010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST2010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST2012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST2012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST3013",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST3013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST4001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HIST4003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HIST4003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HONR2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HONR2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "HONR2004",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=HONR2004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "IRTM3003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=IRTM3003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "IRTM3004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=IRTM3004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "IRTM3006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=IRTM3006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "IRTM3009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=IRTM3009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "IRTM3014",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=IRTM3014",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "IRTM3016",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=IRTM3016",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "IRTM3017",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=IRTM3017",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "IRTM4001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=IRTM4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "IRTM4004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=IRTM4004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "IRTM4006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=IRTM4006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "IRTM4009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=IRTM4009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISCP3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISCP3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM1005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM1005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM2005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM2005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM2007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM2007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM3015",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM3015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM3029",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM3029",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM3030",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM3030",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM3031",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM3031",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM3035",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM3035",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM3037",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM3037",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM4005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM4005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM4006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM4006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "ISOM4008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=ISOM4008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN1000",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN1001",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN1004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN1004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN1005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN1005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN3009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN3009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN4015",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN4015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN4018",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN4018",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "JAPN4032",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=JAPN4032",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1001",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1004",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1008",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1015",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1020",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1020",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1023",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1023",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1055",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1055",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1056",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1056",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1058",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1058",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS1060",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS1060",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2001",
+    "credits": 2,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2005",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2013",
+    "credits": 4,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2015",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2016",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2016",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2017",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2017",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2018",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2018",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2020",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2020",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2026",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2026",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2028",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2028",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2032",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2032",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2035",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2035",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS2037",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS2037",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3001",
+    "credits": 2,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3003",
+    "credits": 2,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3005",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3007",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3009",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3011",
+    "credits": 2,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3014",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3014",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3015",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3015",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3016",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3016",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3017",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3017",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3018",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3018",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3019",
+    "credits": 2,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3019",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3022",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3022",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3037",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3037",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3039",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3039",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3040",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3040",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3042",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3042",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3043",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3043",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3046",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3046",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3048",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3048",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS3051",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS3051",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4001",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4005",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4007",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4012",
+    "credits": 2,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4013",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4014",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4014",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4016",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4016",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4034",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4034",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4035",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4035",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4043",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4043",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4044",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4044",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4045",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4045",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4046",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4046",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS4049",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS4049",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "LAWS5000",
+    "credits": 4,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=LAWS5000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH0001",
+    "credits": 0,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH0001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH1003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH1003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH1007",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH1007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH2003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH2003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH2005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH2005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH2009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH2009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH2010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH2010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH2011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH2011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH3001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH3001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH3009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH3009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH3011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH3011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH3025",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH3025",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH3026",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH3026",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH4003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH4003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MATH4005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MATH4005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MEDI4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MEDI4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT3001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT3001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT3003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT3003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT3004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT3004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT3005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT3005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT3008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT3008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT3009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT3009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT4005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT4005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT4009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT4009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT4010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT4010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MGMT4012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MGMT4012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MKTG2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MKTG2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MKTG3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MKTG3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MKTG4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MKTG4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MKTG4001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MKTG4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MKTG4002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MKTG4002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MKTG4011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MKTG4011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "MKTG4013",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=MKTG4013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHIL1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHIL1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHIL1007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHIL1007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHIL1014",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHIL1014",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHPS2011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHPS2011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHPS2012",
+    "credits": 2,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHPS2012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHPS3010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHPS3010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHPS3011",
+    "credits": 1.5,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHPS3011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHPS3012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHPS3012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHPS3013",
+    "credits": 1.5,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHPS3013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHPS4004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHPS4004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHYS1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHYS1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHYS1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHYS1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHYS1004",
+    "credits": 4,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHYS1004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHYS1005",
+    "credits": 1,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHYS1005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHYS2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHYS2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHYS3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHYS3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHYS3001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHYS3001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHYS3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHYS3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHYS3007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHYS3007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHYS4003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHYS4003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PHYS4005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PHYS4005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT1001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT1001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT1002",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT1002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT1003",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT1003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT1006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT1006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT1008",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT1008",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT1009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT1009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT2006",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT2006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT2007",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT2007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT3002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT3002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT3004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT3004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT3005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT3005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT3006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT3006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT3007",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT3007",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT3019",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT3019",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT4001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PORT4004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PORT4004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC2002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC2002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC2004",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC2004",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC2006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC2006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC3009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC3009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC3013",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC3013",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC3016",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC3016",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC3022",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC3022",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC4001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC4001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC4003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC4003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC4005",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC4005",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "PSYC4006",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=PSYC4006",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SCIE4000",
+    "credits": 6,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SCIE4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY1000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY1000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY2000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY2000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY2001",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY2001",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY2009",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY2009",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY2010",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY2010",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY2011",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY2011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY2014",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY2014",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY3000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY3000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY3012",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY3012",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY3019",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY3019",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY4000",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY4000",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY4002",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY4002",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "SOCY4003",
+    "credits": 3,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=SOCY4003",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "TELC1011",
+    "credits": 0,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=TELC1011",
+    "retrievedAt": "2026-11-10"
+  },
+  {
+    "courseCode": "TELC1012",
+    "credits": 0,
+    "sourceUrl": "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=TELC1012",
+    "retrievedAt": "2026-11-10"
+  }
+]

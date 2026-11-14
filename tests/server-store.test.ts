@@ -1,10 +1,15 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-type GlobalWithStore = typeof globalThis & { termPilotAppStore?: unknown; termPilotSql?: unknown };
+type GlobalWithStore = typeof globalThis & {
+  termPilotAppStore?: unknown;
+  termPilotSql?: unknown;
+  termPilotSchema?: unknown;
+};
 
 afterEach(() => {
   delete (globalThis as GlobalWithStore).termPilotAppStore;
   delete (globalThis as GlobalWithStore).termPilotSql;
+  delete (globalThis as GlobalWithStore).termPilotSchema;
 });
 
 describe("appStore", () => {

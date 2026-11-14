@@ -7,6 +7,7 @@ import { buildWeek } from "../src/domain/week";
 function section(partial: Pick<Section, "courseCode" | "section" | "meetings"> & Partial<Section>): Section {
   return {
     title: "Synthetic section",
+    courseType: "",
     unit: "1",
     department: "FAH",
     teacher: "",
@@ -17,7 +18,7 @@ function section(partial: Pick<Section, "courseCode" | "section" | "meetings"> &
 }
 
 function catalogue(sections: Section[]): Catalogue {
-  return { sections, prerequisites: [], majors: [] };
+  return { sections, prerequisites: [], majors: [], specializations: [] };
 }
 
 const noFailures = { failures: [] as RuleFailure[] };
@@ -145,7 +146,7 @@ describe("buildWeek", () => {
       title: "Beta",
       meetings: [{ day: "MON", startMinutes: 11 * 60, endMinutes: 12 * 60 }],
     });
-    const report = validateSections(["A:001", "B:001"], { majorCode: "CLL19", completed: [] }, catalogue([first, second]));
+    const report = validateSections(["A:001", "B:001"], { majorCode: "CLL19", claims: [] }, catalogue([first, second]));
     expect(report.ok).toBe(false);
     expect(report.failures.some((failure) => failure.rule === "overlap")).toBe(true);
 
@@ -160,6 +161,41 @@ describe("buildWeek", () => {
     expect(week.blocks.every((block) => block.conflict)).toBe(true);
   });
 
+  it("marks both sections of a duplicate course as conflicts", () => {
+    const first = section({
+      courseCode: "CHLL1000",
+      section: "001",
+      title: "Chinese Literature",
+      meetings: [{ day: "FRI", startMinutes: 16 * 60, endMinutes: 17 * 60 + 15 }],
+    });
+    const second = section({
+      courseCode: "CHLL1000",
+      section: "002",
+      title: "Chinese Literature",
+      meetings: [{ day: "MON", startMinutes: 9 * 60, endMinutes: 10 * 60 }],
+    });
+    const report = validateSections(
+      ["CHLL1000:001", "CHLL1000:002"],
+      { majorCode: "CLL19", claims: [] },
+      catalogue([first, second]),
+    );
+    expect(report.failures).toContainEqual({
+      rule: "duplicate-course",
+      courseCode: "CHLL1000",
+      sectionKeys: ["CHLL1000:001", "CHLL1000:002"],
+    });
+
+    const week = buildWeek({
+      saved: [first, second],
+      proposal: null,
+      savedKeys: ["CHLL1000:001", "CHLL1000:002"],
+      failures: report.failures,
+    });
+
+    expect(week.blocks.map((block) => block.sectionKey).sort()).toEqual(["CHLL1000:001", "CHLL1000:002"]);
+    expect(week.blocks.every((block) => block.conflict)).toBe(true);
+  });
+
   it("sets conflict false when the report passes", () => {
     const saved = [
       section({
@@ -168,7 +204,7 @@ describe("buildWeek", () => {
         meetings: [{ day: "MON", startMinutes: 10 * 60, endMinutes: 11 * 60 }],
       }),
     ];
-    const report = validateSections(["L:001"], { majorCode: "CLL19", completed: [] }, catalogue(saved));
+    const report = validateSections(["L:001"], { majorCode: "CLL19", claims: [] }, catalogue(saved));
     expect(report.ok).toBe(true);
 
     const week = buildWeek({

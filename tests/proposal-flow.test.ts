@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { coursesFromCompleted } from "../src/domain/academic";
 import { memoryStore } from "../src/db/store";
 import { applyProposalDecision } from "../src/domain/proposal-flow";
 import type { Catalogue, Section } from "../src/domain/types";
@@ -6,6 +7,7 @@ import type { Catalogue, Section } from "../src/domain/types";
 function section(partial: Pick<Section, "courseCode" | "section" | "meetings"> & Partial<Section>): Section {
   return {
     title: "Synthetic section",
+    courseType: "",
     unit: "1",
     department: "FAH",
     teacher: "",
@@ -30,19 +32,53 @@ function catalogue(): Catalogue {
       }),
     ],
     prerequisites: [],
-    majors: [],
+    majors: [], specializations: [],
   };
 }
 
 async function savedAccount() {
   const store = memoryStore();
   const userId = "student";
-  await store.saveProfile(userId, { majorCode: "CLL19", completed: [] });
+  await store.saveProfile(userId, {
+    majorCode: "CLL19",
+    courses: coursesFromCompleted([]),
+    yearOfStudy: null,
+    admissionCohort: null,
+    interests: null,
+  });
   const timetable = await store.createTimetable(userId, "Fall plan");
   return { store, userId, timetable, cat: catalogue() };
 }
 
 describe("proposal flow", () => {
+  it("applies an empty section list as clearing the timetable", async () => {
+    const { store, userId, timetable, cat } = await savedAccount();
+    const seeded = await store.writeSections(userId, timetable.id, ["LEGAL:001"], timetable.revision);
+    expect(seeded).not.toBeNull();
+    const proposal = await store.createProposal({
+      userId,
+      timetableId: timetable.id,
+      baseRevision: seeded!.revision,
+      sectionKeys: [],
+      droppedWishes: [],
+      warnings: [],
+      summary: "cleared",
+    });
+
+    const applied = await applyProposalDecision({
+      store,
+      actorId: userId,
+      proposalId: proposal.id,
+      action: "apply",
+      catalogue: cat,
+    });
+
+    expect(applied).toMatchObject({ ok: true, effect: "apply" });
+    const after = await store.getTimetable(userId, timetable.id);
+    expect(after?.sectionKeys).toEqual([]);
+    expect(after?.revision).toBe(seeded!.revision + 1);
+  });
+
   it("applies a stored proposal once, then leaves the section list unchanged on a second apply", async () => {
     const { store, userId, timetable, cat } = await savedAccount();
     const proposal = await store.createProposal({

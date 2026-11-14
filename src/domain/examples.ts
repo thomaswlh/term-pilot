@@ -1,4 +1,5 @@
 import type { Store } from "../db/store";
+import { coursesFromCompleted } from "./academic";
 
 export type ExampleStudent = {
   id: "computer-science" | "chinese" | "japanese";
@@ -45,7 +46,13 @@ export async function applyExample(
   if (!ex) {
     throw new Error(`Unknown example: ${exampleId}`);
   }
-  await store.saveProfile(userId, { majorCode: ex.majorCode, completed: [...ex.completed] });
+  await store.saveProfile(userId, {
+    majorCode: ex.majorCode,
+    courses: coursesFromCompleted([...ex.completed]),
+    yearOfStudy: null,
+    admissionCohort: null,
+    interests: null,
+  });
   const timetable = await store.createTimetable(userId, ex.timetableTitle);
   await store.writeSections(userId, timetable.id, [...ex.sectionKeys], 1);
 }

@@ -9,6 +9,7 @@ import path from "node:path";
 function section(partial: Pick<Section, "courseCode" | "section"> & Partial<Section>): Section {
   return {
     title: "",
+    courseType: "",
     unit: "",
     department: "",
     teacher: "",
@@ -31,7 +32,7 @@ const algebra: Catalogue = {
     }),
   ],
   prerequisites: [],
-  majors: [],
+  majors: [], specializations: [],
 };
 
 describe("searchSectionsLegacy", () => {
@@ -44,7 +45,7 @@ describe("searchSectionsLegacy", () => {
     const catalogue: Catalogue = {
       sections: [section({ courseCode: "CSCI1004", section: "001", title: "Introduction to Computer Science" })],
       prerequisites: [],
-      majors: [],
+      majors: [], specializations: [],
     };
     expect(searchSectionsLegacy(catalogue, "CSCI1004:001")).toEqual([]);
     expect(searchSectionsLegacy(catalogue, "CSCI1004").map((hit) => hit.sectionKey)).toEqual(["CSCI1004:001"]);

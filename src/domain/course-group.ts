@@ -1,5 +1,6 @@
-import { demoCredits } from "./credits";
-import { evaluateClassRestrictions, meetingsOverlap } from "./rules";
+import { formatCreditValue } from "./credits";
+import { meetingsOverlap } from "./rules";
+import { restrictionOutcome, unverifiedWish } from "./restrictions";
 import { timedMeetings } from "./section";
 import type { Day, Meeting, Section } from "./types";
 
@@ -11,6 +12,7 @@ export type SearchHitDetail = {
   section: string;
   title: string;
   teacher: string;
+  courseType?: string;
   unit?: string;
   department?: string;
   notes?: string;
@@ -22,15 +24,28 @@ export type SearchHitDetail = {
     groupNo: string;
     requiredCourseCode: string;
   }>;
+  credits?: number | null;
   meetings: SearchMeeting[];
 };
 
 export type CourseGroup = {
   courseCode: string;
   title: string;
-  credits: number;
+  creditsLabel: string;
   department: string;
   sections: SearchHitDetail[];
+};
+
+export type SectionFitKnown = {
+  majors: readonly string[];
+  programmes: readonly string[];
+  specializations: readonly { majorCode: string; code: string }[];
+};
+
+export type SectionFitContext = {
+  yearOfStudy: number | null;
+  programme?: string | null;
+  known: SectionFitKnown;
 };
 
 export type FitStatus =
@@ -38,7 +53,14 @@ export type FitStatus =
   | { status: "fits"; label: string }
   | { status: "overlap"; label: string; conflictingKey: string; conflictingCourseCode: string }
   | { status: "restriction"; label: string; reason: string }
-  | { status: "untimed"; label: string };
+  | { status: "unverified"; label: string }
+  | { status: "untimed"; label: string }
+  | { status: "duplicate"; label: string; courseCode: string };
+
+const emptyFitContext: SectionFitContext = {
+  yearOfStudy: null,
+  known: { majors: [], programmes: [], specializations: [] },
+};
 
 export function groupHitsByCourse(hits: SearchHitDetail[]): CourseGroup[] {
   const groupsMap = new Map<string, CourseGroup>();
@@ -51,7 +73,7 @@ export function groupHitsByCourse(hits: SearchHitDetail[]): CourseGroup[] {
       groupsMap.set(hit.courseCode, {
         courseCode: hit.courseCode,
         title: hit.title,
-        credits: demoCredits([hit.courseCode]).total,
+        creditsLabel: formatCreditValue(typeof hit.credits === "number" ? hit.credits : null),
         department: hit.department ?? "",
         sections: [hit],
       });
@@ -61,10 +83,33 @@ export function groupHitsByCourse(hits: SearchHitDetail[]): CourseGroup[] {
   return Array.from(groupsMap.values());
 }
 
-function isMajorRestriction(hit: SearchHitDetail, majorCode: string | null): boolean {
-  if (!majorCode || !hit.restriction) return false;
-  const classCheck = evaluateClassRestrictions(hit.restriction, majorCode);
-  return Boolean(classCheck.classNotFor || classCheck.classFor);
+function restrictionFit(
+  hit: SearchHitDetail,
+  majorCode: string | null,
+  context: SectionFitContext,
+): Extract<FitStatus, { status: "restriction" | "unverified" }> | null {
+  if (!majorCode || !hit.restriction?.trim()) return null;
+
+  const programme = context.programme?.trim() ? context.programme.trim().toUpperCase() : null;
+  const outcome = restrictionOutcome(hit.restriction, {
+    majorCode,
+    programme,
+    yearOfStudy: context.yearOfStudy,
+  }, context.known);
+
+  if (outcome.status === "ineligible") {
+    return { status: "restriction", label: `Not for ${majorCode}`, reason: `Not eligible for major ${majorCode}` };
+  }
+  if (outcome.status === "unverified") {
+    const label = unverifiedWish(hit.sectionKey, outcome.need).replace(" This course was not added.", "");
+    return { status: "unverified", label };
+  }
+  return null;
+}
+
+function isMajorIneligible(hit: SearchHitDetail, majorCode: string | null, context: SectionFitContext): boolean {
+  const fit = restrictionFit(hit, majorCode, context);
+  return fit?.status === "restriction";
 }
 
 function overlappingSavedSection(
@@ -94,9 +139,19 @@ export function evaluateSectionFit(
   savedSections: Section[],
   savedKeys: string[],
   majorCode: string | null,
+  context: SectionFitContext = emptyFitContext,
 ): FitStatus {
   if (savedKeys.includes(hit.sectionKey)) {
     return { status: "added", label: "Added" };
+  }
+
+  const alreadyTaking = savedKeys.some((key) => {
+    const divider = key.lastIndexOf(":");
+    const code = divider === -1 ? key : key.slice(0, divider);
+    return code === hit.courseCode && key !== hit.sectionKey;
+  });
+  if (alreadyTaking) {
+    return { status: "duplicate", label: `Already taking ${hit.courseCode}`, courseCode: hit.courseCode };
   }
 
   const overlap = overlappingSavedSection(hit, savedSections, savedKeys);
@@ -109,9 +164,8 @@ export function evaluateSectionFit(
     };
   }
 
-  if (isMajorRestriction(hit, majorCode)) {
-    return { status: "restriction", label: `Not for ${majorCode}`, reason: `Not eligible for major ${majorCode}` };
-  }
+  const restriction = restrictionFit(hit, majorCode, context);
+  if (restriction) return restriction;
 
   if (hit.meetings.length === 0) {
     return { status: "untimed", label: "Untimed Course" };
@@ -126,6 +180,7 @@ export function filterCourseGroups(
   savedSections: Section[],
   savedKeys: string[],
   majorCode: string | null,
+  context: SectionFitContext = emptyFitContext,
 ): CourseGroup[] {
   if (filter === "all") return groups;
 
@@ -134,10 +189,16 @@ export function filterCourseGroups(
   for (const group of groups) {
     const matchingSections = group.sections.filter((section) => {
       if (filter === "fits") {
-        return overlappingSavedSection(section, savedSections, savedKeys) === null;
+        const fit = evaluateSectionFit(section, savedSections, savedKeys, majorCode, context);
+        return (
+          fit.status !== "overlap" &&
+          fit.status !== "duplicate" &&
+          fit.status !== "restriction" &&
+          fit.status !== "unverified"
+        );
       }
       if (filter === "major") {
-        return !isMajorRestriction(section, majorCode);
+        return !isMajorIneligible(section, majorCode, context);
       }
       return true;
     });

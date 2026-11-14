@@ -31,8 +31,12 @@ describe("catalogue", () => {
   });
 
   it("loads majors and the CHLL2004 need-1 rows", () => {
-    expect(catalogue.majors).toContainEqual({ code: "CPS19", name: "COMPUTER SCIENCE" });
-    expect(catalogue.majors).toContainEqual({ code: "CLL19", name: "CHINESE LANGUAGE AND LITERATURE" });
+    expect(catalogue.majors).toContainEqual({ code: "CPS19", name: "COMPUTER SCIENCE", programme: "FIC" });
+    expect(catalogue.majors).toContainEqual({
+      code: "CLL19",
+      name: "CHINESE LANGUAGE AND LITERATURE",
+      programme: "FAH",
+    });
     const rows = catalogue.prerequisites.filter((row) => row.courseCode === "CHLL2004");
     expect(rows.map((row) => row.requiredCourseCode).sort()).toEqual(["CHLL1003", "CHLL1004"]);
     expect(new Set(rows.map((row) => row.requiredCount))).toEqual(new Set([1]));

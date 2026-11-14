@@ -1,0 +1,371 @@
+{
+  "majorCode": "JAP25",
+  "curriculumYear": 2025,
+  "source": {
+    "title": "Study Plan for JAP25 Admission in 2025 and onwards",
+    "url": "https://fah.um.edu.mo/wp-content/uploads/2020/09/Study-Plan-for-JAP25_Admission-2025-and-onwards.pdf",
+    "retrievedAt": "2026-11-12"
+  },
+  "courses": [
+    {
+      "sourceCode": "JAPN1000",
+      "catalogueCode": "JAPN1000",
+      "kind": "compulsory",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN1001",
+      "catalogueCode": "JAPN1001",
+      "kind": "compulsory",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN1002",
+      "catalogueCode": "JAPN1002",
+      "kind": "compulsory",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN1003",
+      "catalogueCode": "JAPN1003",
+      "kind": "compulsory",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN2000",
+      "catalogueCode": "JAPN2000",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN2001",
+      "catalogueCode": "JAPN2001",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN2002",
+      "catalogueCode": "JAPN2002",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN2003",
+      "catalogueCode": "JAPN2003",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN2004",
+      "catalogueCode": "JAPN2004",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN2005",
+      "catalogueCode": "JAPN2005",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN2006",
+      "catalogueCode": "JAPN2006",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN2007",
+      "catalogueCode": "JAPN2007",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3002",
+      "catalogueCode": "JAPN3002",
+      "kind": "compulsory",
+      "suggestedYear": 3,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3005",
+      "catalogueCode": "JAPN3005",
+      "kind": "compulsory",
+      "suggestedYear": 3,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3000",
+      "catalogueCode": "JAPN3000",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3003",
+      "catalogueCode": "JAPN3003",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3004",
+      "catalogueCode": "JAPN3004",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3006",
+      "catalogueCode": "JAPN3006",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3007",
+      "catalogueCode": "JAPN3007",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3008",
+      "catalogueCode": "JAPN3008",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3009",
+      "catalogueCode": "JAPN3009",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3010",
+      "catalogueCode": "JAPN3010",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3011",
+      "catalogueCode": "JAPN3011",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN3012",
+      "catalogueCode": "JAPN3012",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4015",
+      "catalogueCode": "JAPN4015",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4016",
+      "catalogueCode": "JAPN4016",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4018",
+      "catalogueCode": "JAPN4018",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4019",
+      "catalogueCode": "JAPN4019",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4024",
+      "catalogueCode": "JAPN4024",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4025",
+      "catalogueCode": "JAPN4025",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4030",
+      "catalogueCode": "JAPN4030",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4031",
+      "catalogueCode": "JAPN4031",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4032",
+      "catalogueCode": "JAPN4032",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4033",
+      "catalogueCode": "JAPN4033",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4034",
+      "catalogueCode": "JAPN4034",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "JAPN4035",
+      "catalogueCode": "JAPN4035",
+      "kind": "required-elective",
+      "suggestedYear": null,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    }
+  ]
+}

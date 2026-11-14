@@ -17,9 +17,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Week } from "@/components/week";
 import { CourseSearchPanel } from "@/components/course-search-panel";
+import type { CourseRecord, CourseStatus } from "@/domain/academic";
 import type { SearchHitDetail } from "@/domain/course-group";
-import { demoCredits } from "@/domain/credits";
-import type { RuleFailure } from "@/domain/rules";
+import { creditBookFromValues, creditReport, formatCredits } from "@/domain/credits";
+import { warningSentence, type RuleFailure, type RuleWarning } from "@/domain/rules";
 import { theme } from "@/domain/theme";
 import type { Day, Section } from "@/domain/types";
 import { buildWeek } from "@/domain/week";
@@ -131,9 +132,19 @@ function readTimetable(data: unknown): { revision: number; sectionKeys: string[]
 function isRuleFailure(value: unknown): value is RuleFailure {
   if (typeof value !== "object" || value === null || !("rule" in value)) return false;
   const rule = (value as { rule: unknown }).rule;
+  if (rule === "no-sections") return true;
   if (rule === "overlap") {
     const keys = (value as { sectionKeys?: unknown }).sectionKeys;
     return Array.isArray(keys) && keys.length === 2 && keys.every((key) => typeof key === "string");
+  }
+  if (rule === "duplicate-course") {
+    const failure = value as { courseCode?: unknown; sectionKeys?: unknown };
+    return (
+      typeof failure.courseCode === "string" &&
+      Array.isArray(failure.sectionKeys) &&
+      failure.sectionKeys.length >= 2 &&
+      failure.sectionKeys.every((key) => typeof key === "string")
+    );
   }
   if (rule === "unknown-section" || rule === "untimed" || rule === "class-for" || rule === "class-not-for") {
     return typeof (value as { sectionKey?: unknown }).sectionKey === "string";
@@ -150,6 +161,48 @@ function readFailures(data: unknown): RuleFailure[] {
   const value = (data as { failures: unknown }).failures;
   if (!Array.isArray(value)) return [];
   return value.filter(isRuleFailure);
+}
+
+function isCourseStatus(value: unknown): value is CourseStatus {
+  return value === "completed" || value === "waived" || value === "transfer";
+}
+
+function isReportedBasis(value: unknown): value is "waived" | "transfer" {
+  return value === "waived" || value === "transfer";
+}
+
+function isRuleWarning(value: unknown): value is RuleWarning {
+  if (typeof value !== "object" || value === null) return false;
+  const warning = value as Record<string, unknown>;
+  if (warning.rule === "prerequisite-not-enforced") {
+    return (
+      typeof warning.sectionKey === "string" &&
+      typeof warning.groupNo === "string" &&
+      typeof warning.requiredCount === "number"
+    );
+  }
+  if (warning.rule === "prerequisite-student-reported") {
+    return (
+      typeof warning.sectionKey === "string" &&
+      typeof warning.courseCode === "string" &&
+      isReportedBasis(warning.basis)
+    );
+  }
+  if (warning.rule === "declared-status") {
+    return (
+      typeof warning.sectionKey === "string" &&
+      typeof warning.courseCode === "string" &&
+      isCourseStatus(warning.status)
+    );
+  }
+  return false;
+}
+
+function readWarnings(data: unknown): RuleWarning[] {
+  if (typeof data !== "object" || data === null || !("warnings" in data)) return [];
+  const value = (data as { warnings: unknown }).warnings;
+  if (!Array.isArray(value)) return [];
+  return value.filter(isRuleWarning);
 }
 
 function readHits(data: unknown): SearchHitDetail[] {
@@ -182,6 +235,7 @@ function sectionFromHit(hit: SearchHitDetail): Section {
     courseCode: hit.courseCode,
     section: hit.section,
     title: hit.title,
+    courseType: typeof hit.courseType === "string" ? hit.courseType : "",
     unit: hit.unit ?? "",
     department: hit.department ?? "",
     teacher: hit.teacher,
@@ -194,17 +248,23 @@ function sectionFromHit(hit: SearchHitDetail): Section {
 export function Editor({
   timetable,
   sections,
-  credits,
+  creditLabel,
+  creditsByCourse,
   proposals,
   shareToken: initialShareToken,
   majorCode = null,
+  courses = [],
+  fitContext = { yearOfStudy: null, known: { majors: [], programmes: [], specializations: [] } },
 }: {
   timetable: EditorTimetable;
   sections: Section[];
-  credits: { total: number };
+  creditLabel: string;
+  creditsByCourse: Record<string, number>;
   proposals: EditorProposal[];
   shareToken: string | null;
   majorCode?: string | null;
+  courses?: CourseRecord[];
+  fitContext?: import("@/domain/course-group").SectionFitContext;
 }) {
   const router = useRouter();
   const skipRename = useRef(false);
@@ -367,6 +427,26 @@ export function Editor({
     sectionKeys: timetable.sectionKeys,
     sections,
   });
+  const [knownCredits, setKnownCredits] = useState(creditsByCourse);
+  const [creditSeed, setCreditSeed] = useState(creditsByCourse);
+  if (creditSeed !== creditsByCourse) {
+    setCreditSeed(creditsByCourse);
+    setKnownCredits((current) => ({ ...current, ...creditsByCourse }));
+  }
+
+  const rememberCredits = useCallback((nextHits: SearchHitDetail[]) => {
+    setKnownCredits((current) => {
+      let changed = false;
+      const next = { ...current };
+      for (const hit of nextHits) {
+        if (typeof hit.credits !== "number" || !Number.isFinite(hit.credits)) continue;
+        if (next[hit.courseCode] === hit.credits) continue;
+        next[hit.courseCode] = hit.credits;
+        changed = true;
+      }
+      return changed ? next : current;
+    });
+  }, []);
 
   const serverKeySignature = timetable.sectionKeys.join("\0");
   const serverSignature = `${timetable.revision}\0${serverKeySignature}`;
@@ -428,6 +508,7 @@ export function Editor({
               return;
             }
             const nextHits = readHits(data);
+            rememberCredits(nextHits);
             setHits(nextHits);
             setHoveredKey(null);
             setPinnedKey((current) => (current && nextHits.some((h) => h.sectionKey === current) ? current : null));
@@ -443,7 +524,7 @@ export function Editor({
         })();
       }, 200);
     },
-    [report],
+    [report, rememberCredits],
   );
 
   function expandChat() {
@@ -532,13 +613,19 @@ export function Editor({
     failures: selected ? selected.failures : failures,
     preview: activePreviewHit ? sectionFromHit(activePreviewHit) : null,
   });
-  const proposalCredits = selected ? demoCredits(selected.sectionKeys.map(courseCodeOf)) : null;
+  const keysMatchServer =
+    live.sectionKeys.length === timetable.sectionKeys.length &&
+    live.sectionKeys.every((key, index) => key === timetable.sectionKeys[index]);
+  const creditBook = creditBookFromValues(knownCredits);
+  const liveCreditLabel = keysMatchServer
+    ? creditLabel
+    : formatCredits(creditReport(live.sectionKeys.map(courseCodeOf), creditBook));
+  const proposalCreditLabel = selected
+    ? formatCredits(creditReport(selected.sectionKeys.map(courseCodeOf), creditBook))
+    : null;
   const proposalSentence = selected
     ? changeSentence(live.sectionKeys, selected.sectionKeys, selected.droppedWishes)
     : null;
-  const liveKeySignature = live.sectionKeys.join("\0");
-  const creditTotal =
-    liveKeySignature === serverKeySignature ? credits.total : new Set(live.sectionKeys.map(courseCodeOf)).size * 3;
 
   async function saveTitle() {
     const next = title.trim();
@@ -658,6 +745,7 @@ export function Editor({
         report("That section could not be added.");
         return;
       }
+      rememberCredits([hit]);
       setLive((current) => {
         const kept = current.sections.filter((section) => next.sectionKeys.includes(`${section.courseCode}:${section.section}`));
         const present = kept.some((section) => `${section.courseCode}:${section.section}` === hit.sectionKey);
@@ -670,6 +758,10 @@ export function Editor({
       setCopied(false);
       setHoveredKey(null);
       setPinnedKey(null);
+      const sentences = readWarnings(data).map((warning) => warningSentence(warning));
+      if (sentences.length > 0) {
+        report(sentences.join("\n"), "info");
+      }
       router.refresh();
     } catch {
       report("Could not reach the server. Check your connection and try again.");
@@ -874,13 +966,14 @@ export function Editor({
               margin: 0,
               fontSize: 13,
               color: noticeTone === "error" ? theme.rose : theme.muted,
+              whiteSpace: "pre-line",
             }}
           >
             {notice}
           </p>
         ) : null}
         <span style={{ color: theme.muted, fontSize: 14, fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>
-          {creditTotal} credits
+          {liveCreditLabel}
         </span>
         {shareToken ? (
           <DropdownMenu>
@@ -1157,12 +1250,12 @@ export function Editor({
             removable={!openSelected}
             onRemove={(sectionKey) => void remove(sectionKey)}
             footer={
-              openSelected && proposalCredits && proposalSentence ? (
+              openSelected && proposalCreditLabel && proposalSentence ? (
                 <div aria-label="Proposal review" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   <p style={{ margin: 0, lineHeight: 1.45, maxWidth: "65ch" }}>{proposalSentence}</p>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
                     <span style={{ marginRight: "auto", color: theme.muted, fontVariantNumeric: "tabular-nums" }}>
-                      {proposalCredits.total} credits
+                      {proposalCreditLabel}
                     </span>
                     <Button
                       type="button"
@@ -1232,6 +1325,7 @@ export function Editor({
           savedSections={live.sections}
           savedKeys={live.sectionKeys}
           majorCode={majorCode}
+          fitContext={fitContext}
           openProposal={openSelected}
           hoveredKey={hoveredKey}
           onHoverKey={setHoveredKey}
@@ -1243,6 +1337,7 @@ export function Editor({
           notice={notice}
           noticeTone={noticeTone}
           focusNonce={focusNonce}
+          courses={courses}
         />
       </div>
     </div>

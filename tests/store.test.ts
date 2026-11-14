@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { coursesFromCompleted } from "../src/domain/academic";
 import { memoryStore } from "../src/db/store";
 
 describe("memoryStore", () => {
@@ -6,19 +7,39 @@ describe("memoryStore", () => {
     const store = memoryStore();
 
     const newUser = await store.getProfile("user-1");
-    expect(newUser).toEqual({ userId: "user-1", majorCode: null, completed: [], saved: false });
+    expect(newUser).toEqual({
+      userId: "user-1",
+      majorCode: null,
+      courses: [],
+      yearOfStudy: null,
+      admissionCohort: null,
+      interests: null,
+      saved: false,
+    });
 
-    const saved1 = await store.saveProfile("user-1", { majorCode: "CPS19", completed: [] });
+    const saved1 = await store.saveProfile("user-1", {
+      majorCode: "CPS19",
+      courses: coursesFromCompleted([]),
+      yearOfStudy: null,
+      admissionCohort: null,
+      interests: null,
+    });
     expect(saved1.saved).toBe(true);
     expect(saved1.majorCode).toBe("CPS19");
-    expect(saved1.completed).toEqual([]);
+    expect(saved1.courses).toEqual([]);
+    expect(saved1.yearOfStudy).toBeNull();
+    expect(saved1.admissionCohort).toBeNull();
+    expect(saved1.interests).toBeNull();
 
     const saved2 = await store.saveProfile("user-1", {
       majorCode: "CLL19",
-      completed: ["CHLL1003"],
+      courses: coursesFromCompleted(["CHLL1003"]),
+      yearOfStudy: null,
+      admissionCohort: null,
+      interests: null,
     });
     expect(saved2.majorCode).toBe("CLL19");
-    expect(saved2.completed).toEqual(["CHLL1003"]);
+    expect(saved2.courses).toEqual(coursesFromCompleted(["CHLL1003"]));
 
     const ttDefault = await store.createTimetable("user-1");
     expect(ttDefault.title).toBe("Untitled timetable");
@@ -72,7 +93,13 @@ describe("memoryStore", () => {
 
   it("lists proposals newest first", async () => {
     const store = memoryStore();
-    await store.saveProfile("user-1", { majorCode: "CPS19", completed: [] });
+    await store.saveProfile("user-1", {
+      majorCode: "CPS19",
+      courses: [],
+      yearOfStudy: null,
+      admissionCohort: null,
+      interests: null,
+    });
     const tt = await store.createTimetable("user-1", "Plan");
     const older = await store.createProposal({
       userId: "user-1",
@@ -142,5 +169,45 @@ describe("memoryStore", () => {
     const sharedAgain = await store.getSharedTimetable(token2!);
     expect(sharedAgain).not.toBeNull();
     expect(sharedAgain!.sectionKeys).toEqual(["GELH1012:001"]);
+  });
+
+  it("keeps an emptied course list empty and hides it from another user", async () => {
+    const store = memoryStore();
+    await store.saveProfile("user-a", {
+      majorCode: "CPS19",
+      courses: coursesFromCompleted(["CSCI1001"]),
+      yearOfStudy: 2,
+      admissionCohort: "2024/2025",
+      interests: "compilers",
+    });
+    await store.saveProfile("user-a", {
+      majorCode: "CPS19",
+      courses: [],
+      yearOfStudy: 2,
+      admissionCohort: "2024/2025",
+      interests: "compilers",
+    });
+    expect((await store.getProfile("user-a")).courses).toEqual([]);
+    expect(await store.getProfile("user-b")).toMatchObject({ saved: false, courses: [] });
+  });
+
+  it("does not put academic context on a shared timetable", async () => {
+    const store = memoryStore();
+    await store.saveProfile("owner", {
+      majorCode: "CLL19",
+      courses: [{ courseCode: "EELC1011", status: "waived", recognizesPrerequisite: false, reason: "placement test" }],
+      yearOfStudy: 1,
+      admissionCohort: "2025/2026",
+      interests: "private interest",
+    });
+    const timetable = await store.createTimetable("owner", "Visible");
+    await store.writeSections("owner", timetable.id, ["CHLL1000:002"], timetable.revision);
+    const token = await store.enableShare("owner", timetable.id);
+    expect(await store.enableShare("other", timetable.id)).toBeNull();
+    const shared = await store.getSharedTimetable(token!);
+    expect(shared).toEqual({ title: "Visible", sectionKeys: ["CHLL1000:002"], updatedAt: expect.any(String) });
+    expect(JSON.stringify(shared)).not.toContain("private interest");
+    expect(JSON.stringify(shared)).not.toContain("placement test");
+    expect(JSON.stringify(shared)).not.toContain("EELC1011");
   });
 });

@@ -10,6 +10,7 @@ export type Section = {
   courseCode: string;
   section: string;
   title: string;
+  courseType: string;
   unit: string;
   department: string;
   teacher: string;
@@ -27,10 +28,13 @@ export type PrereqRow = {
   requiredCourseCode: string;
 };
 
-export type Major = { code: string; name: string };
+export type Major = { code: string; name: string; programme: string };
+
+export type Specialization = { majorCode: string; code: string };
 
 export type Catalogue = {
   sections: Section[];
   prerequisites: PrereqRow[];
   majors: Major[];
+  specializations: Specialization[];
 };

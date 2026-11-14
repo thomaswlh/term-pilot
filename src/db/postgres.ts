@@ -1,7 +1,8 @@
 import { randomUUID } from "node:crypto";
 import type { Sql } from "postgres";
+import { ADMISSION_COHORTS, resolveCourseRecords, type AdmissionCohort, type CourseRecord } from "@/domain/academic";
 import { newShareToken } from "@/domain/share-token";
-import { type Proposal, type ProposalStatus, type SharedTimetable, type Store } from "./store";
+import { type Profile, type Proposal, type ProposalStatus, type SharedTimetable, type Store } from "./store";
 
 function splitSectionKey(sectionKey: string): { courseCode: string; section: string } {
   const idx = sectionKey.indexOf(":");
@@ -18,52 +19,80 @@ function toIsoString(value: Date | string): string {
 export function postgresStore(sql: Sql): Store {
   const store: Store = {
     async getProfile(userId) {
-      const rows = await sql<{
-        user_id: string;
-        major_code: string | null;
-        completed: string[];
-        saved: boolean;
-      }[]>`
-        select user_id, major_code, completed, saved
+      const rows = await sql<ProfileSqlRow[]>`
+        select
+          user_id,
+          major_code,
+          completed,
+          saved,
+          course_records,
+          year_of_study,
+          admission_cohort,
+          interests
         from profiles
         where user_id = ${userId}
         limit 1
       `;
       const row = rows[0];
       if (!row) {
-        return { userId, majorCode: null, completed: [], saved: false };
+        return {
+          userId,
+          majorCode: null,
+          courses: [],
+          yearOfStudy: null,
+          admissionCohort: null,
+          interests: null,
+          saved: false,
+        };
       }
-      return {
-        userId: row.user_id,
-        majorCode: row.major_code,
-        completed: [...row.completed],
-        saved: row.saved,
-      };
+      return mapProfileRow(row);
     },
 
     async saveProfile(userId, input) {
-      const rows = await sql<{
-        user_id: string;
-        major_code: string | null;
-        completed: string[];
-        saved: boolean;
-      }[]>`
-        insert into profiles (user_id, major_code, completed, saved)
-        values (${userId}, ${input.majorCode}, ${input.completed}, true)
+      const completed = input.courses
+        .filter((course) => course.status === "completed")
+        .map((course) => course.courseCode);
+      const rows = await sql<ProfileSqlRow[]>`
+        insert into profiles (
+          user_id,
+          major_code,
+          completed,
+          saved,
+          course_records,
+          year_of_study,
+          admission_cohort,
+          interests
+        )
+        values (
+          ${userId},
+          ${input.majorCode},
+          ${completed},
+          true,
+          ${sql.json(input.courses)},
+          ${input.yearOfStudy},
+          ${input.admissionCohort},
+          ${input.interests}
+        )
         on conflict (user_id) do update
         set major_code = excluded.major_code,
             completed = excluded.completed,
             saved = true,
+            course_records = excluded.course_records,
+            year_of_study = excluded.year_of_study,
+            admission_cohort = excluded.admission_cohort,
+            interests = excluded.interests,
             updated_at = now()
-        returning user_id, major_code, completed, saved
+        returning
+          user_id,
+          major_code,
+          completed,
+          saved,
+          course_records,
+          year_of_study,
+          admission_cohort,
+          interests
       `;
-      const row = rows[0]!;
-      return {
-        userId: row.user_id,
-        majorCode: row.major_code,
-        completed: [...row.completed],
-        saved: row.saved,
-      };
+      return mapProfileRow(rows[0]!);
     },
 
     async listTimetables(userId) {
@@ -473,6 +502,58 @@ export function postgresStore(sql: Sql): Store {
   };
 
   return store;
+}
+
+type ProfileSqlRow = {
+  user_id: string;
+  major_code: string | null;
+  completed: string[] | null;
+  saved: boolean;
+  course_records: unknown;
+  year_of_study: number | string | null;
+  admission_cohort: string | null;
+  interests: string | null;
+};
+
+function courseRecordsFromColumn(value: unknown): CourseRecord[] | null {
+  if (value === null) return null;
+  if (Array.isArray(value)) return value as CourseRecord[];
+  if (typeof value === "string") {
+    const parsed: unknown = JSON.parse(value);
+    if (parsed === null) return null;
+    if (Array.isArray(parsed)) return parsed as CourseRecord[];
+  }
+  throw new Error("profiles.course_records must be null or a JSON array");
+}
+
+function yearOfStudyFromColumn(value: number | string | null): Profile["yearOfStudy"] {
+  if (value === null) return null;
+  const year = typeof value === "number" ? value : Number(value);
+  if (year === 1 || year === 2 || year === 3 || year === 4 || year === 5) return year;
+  return null;
+}
+
+function admissionCohortFromColumn(value: string | null): AdmissionCohort | null {
+  if (value !== null && (ADMISSION_COHORTS as readonly string[]).includes(value)) {
+    return value as AdmissionCohort;
+  }
+  return null;
+}
+
+function mapProfileRow(row: ProfileSqlRow): Profile {
+  const completed = Array.isArray(row.completed) ? row.completed : [];
+  return {
+    userId: row.user_id,
+    majorCode: row.major_code,
+    courses: resolveCourseRecords({
+      courseRecords: courseRecordsFromColumn(row.course_records),
+      completed,
+    }),
+    yearOfStudy: yearOfStudyFromColumn(row.year_of_study),
+    admissionCohort: admissionCohortFromColumn(row.admission_cohort),
+    interests: row.interests,
+    saved: row.saved,
+  };
 }
 
 function mapProposalRow(row: {

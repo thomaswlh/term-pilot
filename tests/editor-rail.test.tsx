@@ -15,7 +15,7 @@ describe("Editor shell and rail", () => {
     expect(editor).toContain("46");
     expect(editor).toContain('aria-label="Resize AI chat"');
     expect(editor).toContain('role="separator"');
-    expect(editor).toContain("{creditTotal} credits");
+    expect(editor).toContain("{liveCreditLabel}");
     expect(editor).toContain("<CopilotPanel");
     expect(editor).toContain("hidden={!chatOpen}");
     expect(editor).not.toContain("{chatOpen && <CopilotPanel");

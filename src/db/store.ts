@@ -1,10 +1,26 @@
 import { randomUUID } from "node:crypto";
+import {
+  type AdmissionCohort,
+  type CourseRecord,
+} from "@/domain/academic";
+import type { RuleWarning } from "@/domain/rules";
 import { newShareToken } from "@/domain/share-token";
+
+export type ProfileInput = {
+  majorCode: string;
+  courses: CourseRecord[];
+  yearOfStudy: 1 | 2 | 3 | 4 | 5 | null;
+  admissionCohort: AdmissionCohort | null;
+  interests: string | null;
+};
 
 export type Profile = {
   userId: string;
   majorCode: string | null;
-  completed: string[];
+  courses: CourseRecord[];
+  yearOfStudy: 1 | 2 | 3 | 4 | 5 | null;
+  admissionCohort: AdmissionCohort | null;
+  interests: string | null;
   saved: boolean;
 };
 
@@ -32,7 +48,7 @@ export type Proposal = {
   baseRevision: number;
   sectionKeys: string[];
   droppedWishes: string[];
-  warnings: { rule: string; sectionKey: string; groupNo: string; requiredCount: number }[];
+  warnings: RuleWarning[];
   summary: string;
   status: ProposalStatus;
   createdAt: string;
@@ -40,7 +56,7 @@ export type Proposal = {
 
 export type Store = {
   getProfile(userId: string): Promise<Profile>;
-  saveProfile(userId: string, input: { majorCode: string; completed: string[] }): Promise<Profile>;
+  saveProfile(userId: string, input: ProfileInput): Promise<Profile>;
   listTimetables(userId: string): Promise<Timetable[]>;
   createTimetable(userId: string, title?: string): Promise<Timetable>;
   getTimetable(userId: string, id: string): Promise<Timetable | null>;
@@ -66,8 +82,31 @@ function nowIso(): string {
   return new Date().toISOString();
 }
 
+function copyCourses(courses: CourseRecord[]): CourseRecord[] {
+  return courses.map((course) => ({ ...course }));
+}
+
+function unsavedProfile(userId: string): Profile {
+  return {
+    userId,
+    majorCode: null,
+    courses: [],
+    yearOfStudy: null,
+    admissionCohort: null,
+    interests: null,
+    saved: false,
+  };
+}
+
 export function memoryStore(): Store {
-  type ProfileRow = { majorCode: string | null; completed: string[]; saved: boolean };
+  type ProfileRow = {
+    majorCode: string | null;
+    courses: CourseRecord[];
+    yearOfStudy: Profile["yearOfStudy"];
+    admissionCohort: Profile["admissionCohort"];
+    interests: string | null;
+    saved: boolean;
+  };
   const profiles = new Map<string, ProfileRow>();
   const timetables = new Map<string, Timetable>();
   const proposals = new Map<string, Proposal>();
@@ -85,20 +124,21 @@ export function memoryStore(): Store {
   return {
     async getProfile(userId) {
       const row = profiles.get(userId);
-      if (!row) {
-        return { userId, majorCode: null, completed: [], saved: false };
-      }
-      return { userId, ...row, completed: [...row.completed] };
+      if (!row) return unsavedProfile(userId);
+      return { userId, ...row, courses: copyCourses(row.courses) };
     },
 
     async saveProfile(userId, input) {
       const row: ProfileRow = {
         majorCode: input.majorCode,
-        completed: [...input.completed],
+        courses: copyCourses(input.courses),
+        yearOfStudy: input.yearOfStudy,
+        admissionCohort: input.admissionCohort,
+        interests: input.interests,
         saved: true,
       };
       profiles.set(userId, row);
-      return { userId, majorCode: row.majorCode, completed: [...row.completed], saved: true };
+      return { userId, ...row, courses: copyCourses(row.courses) };
     },
 
     async listTimetables(userId) {

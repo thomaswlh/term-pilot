@@ -2,7 +2,8 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { Gallery, type GalleryCard } from "@/components/gallery";
 import { loadCatalogue, parseSectionKey, sectionKey } from "@/domain/catalogue";
-import { demoCredits, miniature } from "@/domain/credits";
+import { creditReport, formatCredits, miniature } from "@/domain/credits";
+import { loadCreditBook } from "@/domain/credit-snapshot";
 import { appStore } from "@/db/server-store";
 import type { Section } from "@/domain/types";
 
@@ -33,12 +34,12 @@ export default async function TimetablesPage() {
         const section = byKey.get(key);
         if (section) sections.push(section);
       }
-      const credits = demoCredits(row.sectionKeys.map((key) => parseSectionKey(key).courseCode));
+      const courseCodes = row.sectionKeys.map((key) => parseSectionKey(key).courseCode);
       return {
         id: row.id,
         title: row.title,
         editedLabel: formatEdited(row.updatedAt),
-        creditTotal: credits.total,
+        creditLabel: formatCredits(creditReport(courseCodes, loadCreditBook())),
         columns: miniature(sections).columns,
       };
     });

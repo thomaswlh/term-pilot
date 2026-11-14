@@ -1,3 +1,4 @@
+import { loadCreditBook } from "./credit-snapshot";
 import { sectionKey } from "./section";
 import type { Catalogue, Meeting, Section } from "./types";
 
@@ -13,6 +14,12 @@ export type SearchHit = {
   section: string;
   title: string;
   teacher: string;
+  courseType: string;
+  credits: number | null;
+  meetings: string[];
+  restriction: string;
+  unit: string;
+  department: string;
 };
 
 export type ScoredSection = SearchHit & { score: number };
@@ -35,6 +42,7 @@ export function scoreSections(catalogue: Catalogue, query: string): ScoredSectio
   for (const token of queryTokens) queryCounts.set(token, (queryCounts.get(token) ?? 0) + 1);
   const n = docs.length;
   const avgdl = docs.reduce((sum, doc) => sum + doc.length, 0) / n || 1;
+  const creditBook = loadCreditBook();
   const df = new Map<string, number>();
   for (const doc of docs) {
     for (const term of new Set(doc.tokens)) df.set(term, (df.get(term) ?? 0) + 1);
@@ -50,6 +58,12 @@ export function scoreSections(catalogue: Catalogue, query: string): ScoredSectio
       section: doc.section.section,
       title: doc.section.title,
       teacher: doc.section.teacher,
+      courseType: doc.section.courseType,
+      credits: creditBook.creditsFor(doc.section.courseCode),
+      meetings: doc.section.meetings.map(renderMeeting).filter((value): value is string => value !== null),
+      restriction: doc.section.restriction,
+      unit: doc.section.unit,
+      department: doc.section.department,
       score,
     }));
 }

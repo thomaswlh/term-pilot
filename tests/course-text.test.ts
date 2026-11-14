@@ -3,7 +3,7 @@ import { courseEmbeddingText, courseFields } from "../src/domain/retrieval/cours
 import type { Section } from "../src/domain/types";
 
 function section(partial: Pick<Section, "courseCode" | "section"> & Partial<Section>): Section {
-  return { title: "", unit: "", department: "", teacher: "", notes: "", restriction: "", meetings: [], ...partial };
+  return { title: "", courseType: "", unit: "", department: "", teacher: "", notes: "", restriction: "", meetings: [], ...partial };
 }
 
 describe("course text", () => {

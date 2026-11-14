@@ -12,6 +12,7 @@ import { ruleSentence, validateSections, type RuleFailure } from "../src/domain/
 function makeSection(overrides: Partial<Section> & Pick<Section, "courseCode" | "section">): Section {
   return {
     title: "",
+    courseType: "",
     unit: "",
     department: "",
     teacher: "",
@@ -23,7 +24,7 @@ function makeSection(overrides: Partial<Section> & Pick<Section, "courseCode" | 
 }
 
 function makeCatalogue(sections: Section[], prerequisites: PrereqRow[] = []): Catalogue {
-  return { sections, prerequisites, majors: [] };
+  return { sections, prerequisites, majors: [], specializations: [] };
 }
 
 function makeProposal(overrides: Partial<Proposal> & Pick<Proposal, "userId" | "timetableId" | "baseRevision" | "sectionKeys">): Proposal {
@@ -38,7 +39,7 @@ function makeProposal(overrides: Partial<Proposal> & Pick<Proposal, "userId" | "
 }
 
 describe("confirm decisions", () => {
-  const profile = { majorCode: "CLL19" as const, completed: [] as string[] };
+  const profile = { majorCode: "CLL19" as const, claims: [] };
 
   it("decideManualAdd: unsaved profile returns the profile sentence and no success revision", () => {
     const report = { ok: true, failures: [] as RuleFailure[], warnings: [] };
@@ -408,6 +409,72 @@ describe("confirm decisions", () => {
     expect(r).toEqual({ ok: false, reason: "stale" });
   });
 
+  it("decideManualAdd: a second section of the same course is rejected", () => {
+    const cat = makeCatalogue([
+      makeSection({
+        courseCode: "CHLL1000",
+        section: "001",
+        meetings: [{ day: "FRI", startMinutes: 16 * 60, endMinutes: 17 * 60 + 15 }],
+      }),
+      makeSection({
+        courseCode: "CHLL1000",
+        section: "002",
+        meetings: [{ day: "MON", startMinutes: 9 * 60, endMinutes: 10 * 60 }],
+      }),
+    ]);
+    const report = validateSections(["CHLL1000:001", "CHLL1000:002"], profile, cat);
+    expect(report.ok).toBe(false);
+    const decision = decideManualAdd({
+      profileSaved: true,
+      timetable: { revision: 2, sectionKeys: ["CHLL1000:001"] },
+      sectionKey: "CHLL1000:002",
+      report,
+    });
+    expect(decision.ok).toBe(false);
+    if (!decision.ok) {
+      expect(decision.reason).toBe(ruleSentence(report.failures[0]!));
+    }
+  });
+
+  it("decideConfirm: a duplicate-course proposal is illegal", () => {
+    const failure: RuleFailure = {
+      rule: "duplicate-course",
+      courseCode: "CHLL1000",
+      sectionKeys: ["CHLL1000:001", "CHLL1000:002"],
+    };
+    const proposal = makeProposal({
+      userId: "u1",
+      timetableId: "t1",
+      baseRevision: 1,
+      sectionKeys: ["CHLL1000:001", "CHLL1000:002"],
+    });
+    const decision = decideConfirm({
+      actorId: "u1",
+      mode: "apply",
+      proposal,
+      timetable: { userId: "u1", revision: 1 },
+      report: { ok: false, failures: [failure], warnings: [] },
+    });
+    expect(decision).toEqual({ ok: false, reason: "illegal", detail: ruleSentence(failure) });
+  });
+
+  it("decideConfirm: empty section keys clear the timetable instead of failing no-sections", () => {
+    const proposal = makeProposal({
+      userId: "u1",
+      timetableId: "t1",
+      baseRevision: 1,
+      sectionKeys: [],
+    });
+    const r = decideConfirm({
+      actorId: "u1",
+      mode: "apply",
+      proposal,
+      timetable: { userId: "u1", revision: 1 },
+      report: { ok: false, failures: [{ rule: "no-sections" }], warnings: [] },
+    });
+    expect(r).toEqual({ ok: true, effect: "apply", sectionKeys: [], revision: 2 });
+  });
+
   it("decideConfirm: apply when report fails returns illegal with ruleSentence detail", () => {
     const failure: RuleFailure = { rule: "untimed", sectionKey: "Z:001" };
     const proposal = makeProposal({
@@ -505,6 +572,60 @@ describe("confirm decisions", () => {
       ok: true,
       status: "discarded",
     });
+  });
+
+  it("decideConfirm: a waived one-course prerequisite applies and empty claims are illegal", () => {
+    const cat = makeCatalogue(
+      [
+        makeSection({
+          courseCode: "NEED1",
+          section: "001",
+          meetings: [{ day: "MON", startMinutes: 9 * 60, endMinutes: 10 * 60 }],
+        }),
+      ],
+      [
+        {
+          courseCode: "NEED1",
+          preRequisiteFor: "ALL",
+          majorList: "",
+          requiredCount: 1,
+          groupNo: "G1",
+          requiredCourseCode: "CHLL1003",
+        },
+      ],
+    );
+    const proposal = makeProposal({
+      userId: "u1",
+      timetableId: "t1",
+      baseRevision: 1,
+      sectionKeys: ["NEED1:001"],
+    });
+    const timetable = { userId: "u1", revision: 1 };
+    const waived = validateSections(
+      ["NEED1:001"],
+      { majorCode: "CLL19", claims: [{ courseCode: "CHLL1003", basis: "waived" }] },
+      cat,
+    );
+    expect(waived.ok).toBe(true);
+    expect(
+      decideConfirm({
+        actorId: "u1",
+        mode: "apply",
+        proposal,
+        timetable,
+        report: waived,
+      }).ok,
+    ).toBe(true);
+
+    const empty = validateSections(["NEED1:001"], { majorCode: "CLL19", claims: [] }, cat);
+    const refused = decideConfirm({
+      actorId: "u1",
+      mode: "apply",
+      proposal,
+      timetable,
+      report: empty,
+    });
+    expect(refused).toMatchObject({ ok: false, reason: "illegal" });
   });
 
   it("decideConfirm: second call after applied returns already-applied", () => {

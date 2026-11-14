@@ -8,8 +8,9 @@ describe("proposal review bar", () => {
   it("keeps the confirm actions and docks them on the week sheet", () => {
     expect(editor).toContain("function changeSentence");
     expect(editor).toContain("{proposalSentence}");
-    expect(editor).toContain("{proposalCredits.total} credits");
-    expect(editor).not.toContain("proposalCredits.label");
+    expect(editor).toContain("{proposalCreditLabel}");
+    expect(editor).not.toContain("proposalCredits");
+    expect(editor).not.toContain("demoCredits");
     expect(editor).toContain('confirmProposal("discard")');
     expect(editor).toContain('confirmProposal("save-as-new")');
     expect(editor).toContain('confirmProposal("apply")');

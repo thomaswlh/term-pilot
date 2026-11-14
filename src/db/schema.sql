@@ -6,6 +6,11 @@ create table if not exists profiles (
   updated_at timestamptz not null default now()
 );
 
+alter table profiles add column if not exists course_records jsonb;
+alter table profiles add column if not exists year_of_study smallint;
+alter table profiles add column if not exists admission_cohort text;
+alter table profiles add column if not exists interests text;
+
 create table if not exists timetables (
   id text primary key,
   user_id text not null,

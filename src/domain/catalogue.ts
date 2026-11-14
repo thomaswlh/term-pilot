@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import * as XLSX from "xlsx";
 
-import type { Catalogue, Day, Major, Meeting, PrereqRow, Section } from "./types";
+import type { Catalogue, Day, Major, Meeting, PrereqRow, Section, Specialization } from "./types";
 
 export type {
   Catalogue,
@@ -37,7 +37,7 @@ export function loadCatalogue(paths: Partial<CatalogueFileSet> = {}): Catalogue 
   return {
     sections: loadSections(files.schedule.file, files.schedule.sheet),
     prerequisites: loadPrerequisites(files.prerequisites.file, files.prerequisites.sheet),
-    majors: loadMajors(files.majors.file, files.majors.sheet),
+    ...loadMajors(files.majors.file, files.majors.sheet),
   };
 }
 
@@ -121,6 +121,7 @@ type ScheduleColumns = {
   department: number;
   courseCode: number;
   courseTitle: number;
+  courseType: number;
   section: number;
   teacher: number;
   notes: number;
@@ -145,6 +146,8 @@ function resolveScheduleColumns(headerRow: string[]): ScheduleColumns {
       indices.section = index;
     } else if (norm === "course title") {
       indices.courseTitle = index;
+    } else if (norm === "course type") {
+      indices.courseType = index;
     } else if (norm === "offering unit") {
       indices.unit = index;
     } else if (norm === "offering department") {
@@ -169,6 +172,7 @@ function resolveScheduleColumns(headerRow: string[]): ScheduleColumns {
     indices.department === undefined ||
     indices.courseCode === undefined ||
     indices.courseTitle === undefined ||
+    indices.courseType === undefined ||
     indices.section === undefined ||
     indices.teacher === undefined ||
     indices.notes === undefined ||
@@ -185,6 +189,7 @@ function resolveScheduleColumns(headerRow: string[]): ScheduleColumns {
     department: indices.department,
     courseCode: indices.courseCode,
     courseTitle: indices.courseTitle,
+    courseType: indices.courseType,
     section: indices.section,
     teacher: indices.teacher,
     notes: indices.notes,
@@ -222,6 +227,7 @@ function loadSections(file: string, sheet: string): Section[] {
         courseCode,
         section: sectionCode,
         title: cell(row, columns.courseTitle),
+        courseType: cell(row, columns.courseType),
         unit: cell(row, columns.unit),
         department: cell(row, columns.department),
         teacher: cell(row, columns.teacher),
@@ -322,6 +328,8 @@ function loadPrerequisites(file: string, sheet: string): PrereqRow[] {
 type MajorColumns = {
   major: number;
   description: number;
+  programme: number;
+  specialization: number;
 };
 
 function resolveMajorColumns(headerRow: string[]): MajorColumns {
@@ -333,22 +341,35 @@ function resolveMajorColumns(headerRow: string[]): MajorColumns {
       indices.major = index;
     } else if (norm === "major description") {
       indices.description = index;
+    } else if (norm === "programme") {
+      indices.programme = index;
+    } else if (norm === "specialization") {
+      indices.specialization = index;
     }
   });
 
-  if (indices.major === undefined || indices.description === undefined) {
+  if (
+    indices.major === undefined ||
+    indices.description === undefined ||
+    indices.programme === undefined ||
+    indices.specialization === undefined
+  ) {
     throw new Error("Incomplete majors header mapping");
   }
 
   return indices as MajorColumns;
 }
 
-function loadMajors(file: string, sheet: string): Major[] {
+function loadMajors(
+  file: string,
+  sheet: string,
+): { majors: Major[]; specializations: Specialization[] } {
   const rows = readSheetRows(file, sheet);
   const headerIndex = findHeaderRow(rows, (norm) => norm === "major");
   const columns = resolveMajorColumns(rows[headerIndex] as string[]);
   const seen = new Set<string>();
   const majors: Major[] = [];
+  const specializations: Specialization[] = [];
 
   for (let i = headerIndex + 1; i < rows.length; i++) {
     const row = rows[i] as string[];
@@ -356,6 +377,12 @@ function loadMajors(file: string, sheet: string): Major[] {
     if (!code) {
       continue;
     }
+
+    const specializationCode = cell(row, columns.specialization);
+    if (specializationCode) {
+      specializations.push({ majorCode: code, code: specializationCode });
+    }
+
     if (seen.has(code)) {
       continue;
     }
@@ -363,8 +390,9 @@ function loadMajors(file: string, sheet: string): Major[] {
     majors.push({
       code,
       name: cell(row, columns.description),
+      programme: cell(row, columns.programme),
     });
   }
 
-  return majors;
+  return { majors, specializations };
 }

@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "retrieval:score": "tsx scripts/retrieval-score.ts",
-    "retrieval:pool": "tsx scripts/retrieval-pool.ts"
+    "retrieval:pool": "tsx scripts/retrieval-pool.ts",
+    "credits:refresh": "tsx scripts/credits-refresh.ts"
   },
   "keywords": [],
   "author": "",

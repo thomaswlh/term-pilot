@@ -4,6 +4,7 @@ import { AccountMenu } from "@/components/account-menu";
 import { Button } from "@/components/ui/button";
 import { auth } from "@clerk/nextjs/server";
 import { loadCatalogue } from "@/domain/catalogue";
+import type { AdmissionCohort, CourseRecord } from "@/domain/academic";
 import { ProfileForm } from "@/components/profile-form";
 import { appStore } from "@/db/server-store";
 
@@ -11,12 +12,18 @@ export default async function ProfilePage() {
   const catalogue = loadCatalogue();
   const { userId } = await auth();
   let initialMajorCode: string | null = null;
-  let initialCompleted: string[] = [];
+  let courses: CourseRecord[] = [];
+  let yearOfStudy: 1 | 2 | 3 | 4 | 5 | null = null;
+  let admissionCohort: AdmissionCohort | null = null;
+  let interests: string | null = null;
   let saved = false;
   if (userId) {
     const profile = await appStore.getProfile(userId);
     initialMajorCode = profile.majorCode;
-    initialCompleted = [...profile.completed];
+    courses = profile.courses;
+    yearOfStudy = profile.yearOfStudy;
+    admissionCohort = profile.admissionCohort;
+    interests = profile.interests;
     saved = profile.saved;
   }
   return (
@@ -61,7 +68,14 @@ export default async function ProfilePage() {
         <p style={{ margin: "0 0 28px", color: "var(--muted)", lineHeight: 1.5, maxWidth: "52ch" }}>
           Saving unlocks manual add and planning on your timetable. Search already works before you save.
         </p>
-        <ProfileForm majors={catalogue.majors} initialMajorCode={initialMajorCode} initialCompleted={initialCompleted} />
+        <ProfileForm
+          majors={catalogue.majors}
+          initialMajorCode={initialMajorCode}
+          courses={courses}
+          yearOfStudy={yearOfStudy}
+          admissionCohort={admissionCohort}
+          interests={interests}
+        />
       </main>
     </div>
   );

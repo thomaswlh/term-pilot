@@ -1,4 +1,5 @@
 import type { Proposal, Store, Timetable } from "../db/store";
+import { prerequisiteClaims } from "./academic";
 import { decideConfirm, decideDiscard } from "./confirm";
 import { validateSections } from "./rules";
 import type { Catalogue } from "./types";
@@ -38,11 +39,19 @@ export async function applyProposalDecision(input: {
     ? await input.store.getTimetable(input.actorId, proposal.timetableId)
     : null;
   const profile = await input.store.getProfile(input.actorId);
-  const report = validateSections(
-    proposal?.sectionKeys ?? [],
-    { majorCode: profile.majorCode ?? "", completed: profile.completed },
-    input.catalogue,
-  );
+  const sectionKeys = proposal?.sectionKeys ?? [];
+  const report =
+    sectionKeys.length === 0
+      ? { ok: true as const, failures: [], warnings: [] }
+      : validateSections(
+          sectionKeys,
+          {
+            majorCode: profile.majorCode ?? "",
+            claims: prerequisiteClaims(profile.courses),
+            yearOfStudy: profile.yearOfStudy,
+          },
+          input.catalogue,
+        );
   const decision = decideConfirm({
     actorId: input.actorId,
     mode: input.action,

@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { completedClaims } from "../src/domain/academic";
 import { loadCatalogue, sectionKey } from "../src/domain/catalogue";
 import { applyExample, exampleStudents } from "../src/domain/examples";
 import { validateSections } from "../src/domain/rules";
@@ -18,7 +19,11 @@ describe("example students", () => {
 
   it("validateSections passes for each example's major, completed, and starter keys", () => {
     for (const ex of exampleStudents) {
-      const report = validateSections(ex.sectionKeys, { majorCode: ex.majorCode, completed: ex.completed }, catalogue);
+      const report = validateSections(
+        ex.sectionKeys,
+        { majorCode: ex.majorCode, claims: completedClaims(ex.completed) },
+        catalogue,
+      );
       expect(report.ok, `expected ok for ${ex.id}: ${JSON.stringify(report.failures)}`).toBe(true);
     }
   });
@@ -55,7 +60,7 @@ describe("example students", () => {
     const userId = "u-example-3";
     await applyExample(store, userId, "japanese");
     const profile = await store.getProfile(userId);
-    expect(profile.completed).toEqual([]);
+    expect(profile.courses).toEqual([]);
     expect(profile.saved).toBe(true);
     expect(profile.majorCode).toBe("JAP25");
   });

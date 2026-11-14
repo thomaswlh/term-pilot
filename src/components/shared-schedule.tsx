@@ -1,7 +1,6 @@
 "use client";
 
 import { Week } from "@/components/week";
-import { demoCredits } from "@/domain/credits";
 import { theme } from "@/domain/theme";
 import type { Section } from "@/domain/types";
 import { buildWeek } from "@/domain/week";
@@ -10,8 +9,15 @@ function sectionKeyOf(section: Section): string {
   return `${section.courseCode}:${section.section}`;
 }
 
-export function SharedSchedule({ title, sections }: { title: string; sections: Section[] }) {
-  const credits = demoCredits(sections.map((section) => section.courseCode));
+export function SharedSchedule({
+  title,
+  sections,
+  creditLabel,
+}: {
+  title: string;
+  sections: Section[];
+  creditLabel: string;
+}) {
   const week = buildWeek({
     saved: sections,
     savedKeys: sections.map(sectionKeyOf),
@@ -58,7 +64,7 @@ export function SharedSchedule({ title, sections }: { title: string; sections: S
           {title}
         </h1>
         <span style={{ color: theme.muted, fontSize: 14, fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>
-          {credits.total} {credits.label}
+          {creditLabel}
         </span>
       </header>
       <main

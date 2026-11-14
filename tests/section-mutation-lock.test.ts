@@ -98,7 +98,10 @@ describe("timetables/[id]/sections mutation proposal lock", () => {
       appStore.getProfile.mockResolvedValue({
         saved: true,
         majorCode: "CPS19",
-        completed: [],
+        courses: [],
+        yearOfStudy: null,
+        admissionCohort: null,
+        interests: null,
       });
       appStore.writeSections.mockResolvedValue({
         id: "tt_test",

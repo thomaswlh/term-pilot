@@ -1,19 +1,23 @@
+import { readFileSync } from "node:fs";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { sectionKey } from "../src/domain/catalogue";
+import { coursesFromCompleted, prerequisiteClaims } from "../src/domain/academic";
+import { loadCatalogue, sectionKey } from "../src/domain/catalogue";
+import { validateSections } from "../src/domain/rules";
 import type { Catalogue, Section } from "../src/domain/types";
 import { memoryStore, type Store } from "../src/db/store";
 import {
   createTools,
   LimitError,
   runTurn,
+  TOOL_NAMES,
   type AgentBudget,
   type ToolCaller,
 } from "../src/agent/turn";
-import { validateSections } from "../src/domain/rules";
 
 function makeSection(overrides: Partial<Section> & Pick<Section, "courseCode" | "section">): Section {
   return {
     title: "",
+    courseType: "",
     unit: "",
     department: "",
     teacher: "",
@@ -43,11 +47,17 @@ function smallCatalogue(): Catalogue {
     title: "Other course",
     meetings: [{ day: "WED", startMinutes: 10 * 60, endMinutes: 11 * 60 }],
   });
-  return { sections: [legal, chll, other], prerequisites: [], majors: [] };
+  return { sections: [legal, chll, other], prerequisites: [], majors: [], specializations: [] };
 }
 
 async function seedOneSectionTimetable(store: Store, userId: string): Promise<{ timetableId: string; sectionKeys: string[] }> {
-  await store.saveProfile(userId, { majorCode: "CLL19", completed: [] });
+  await store.saveProfile(userId, {
+    majorCode: "CLL19",
+    courses: coursesFromCompleted([]),
+    yearOfStudy: null,
+    admissionCohort: null,
+    interests: null,
+  });
   const cat = smallCatalogue();
   const key = sectionKey(cat.sections[0]!);
   const tt = await store.createTimetable(userId, "seed");
@@ -108,7 +118,7 @@ describe("agent turn", () => {
     expect(proposals[0]!.status).toBe("open");
   });
 
-  it("plan returns proposal payload when draft exists and refused shape when planRequest refuses", async () => {
+  it("plan returns proposal payload when draft exists and a report without storing when sections stay", async () => {
     const store = memoryStore();
     const userId = "u-plan";
     const { timetableId } = await seedOneSectionTimetable(store, userId);
@@ -133,10 +143,15 @@ describe("agent turn", () => {
     });
     expect(ok).toMatchObject({ proposalId: expect.any(String), summary: expect.any(String) });
 
-    const refused = await callTool("plan", {
+    const missed = await callTool("plan", {
       request: { topics: ["NOPE"], keep: [], drop: [], avoid: [] },
     });
-    expect(refused).toEqual({ proposalId: null, reason: expect.any(String) });
+    expect(missed).toMatchObject({
+      proposalId: null,
+      droppedWishes: ["No sections found for NOPE."],
+    });
+    expect(missed).not.toHaveProperty("reason");
+    expect(await store.listProposals(userId, timetableId)).toHaveLength(1);
   });
 
   it("validate returns RuleReport and does not insert a proposal", async () => {
@@ -160,7 +175,14 @@ describe("agent turn", () => {
     };
 
     const profile = await store.getProfile(userId);
-    const report = validateSections(sectionKeys, { majorCode: profile.majorCode ?? "", completed: profile.completed }, catalogue);
+    const report = validateSections(
+      sectionKeys,
+      {
+        majorCode: profile.majorCode ?? "",
+        claims: prerequisiteClaims(profile.courses),
+      },
+      catalogue,
+    );
     const out = await callTool("validate", { sectionKeys });
     expect(out).toEqual(report);
     expect(await store.listProposals(userId, timetableId)).toEqual([]);
@@ -395,7 +417,18 @@ describe("agent turn", () => {
     const callTool: ToolCaller = async (name, args) => tools[name as keyof typeof tools](args as never);
 
     const prof = await callTool("readProfile", undefined);
-    expect(prof).toEqual({ saved: true, majorCode: "CLL19", completed: [] });
+    expect(prof).toEqual({
+      saved: true,
+      majorCode: "CLL19",
+      majorName: null,
+      majorProgramme: null,
+      courses: [],
+      heldCourseCodes: [],
+      yearOfStudy: null,
+      admissionCohort: null,
+      interests: null,
+    });
+    expect(prof).not.toHaveProperty("completed");
 
     const tt = await callTool("readTimetable", undefined);
     expect(tt).toEqual({
@@ -516,5 +549,696 @@ describe("agent turn", () => {
     expect(budget.start).toBe(0);
     expect(await store.listProposals(userId, timetableId)).toEqual([]);
     expect((await store.getTimetable(userId, timetableId))?.sectionKeys).toEqual(sectionKeys);
+  });
+
+  it("plan returns credits for an identified topic without choosing extra courses", async () => {
+    const store = memoryStore();
+    const userId = "u-credits";
+    const { timetableId } = await seedOneSectionTimetable(store, userId);
+    const catalogue = smallCatalogue();
+    const budget: AgentBudget = { calls: 0, maxCalls: 8, maxMs: 30_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId,
+      catalogue,
+      now: () => 0,
+      budget,
+    });
+
+    const result = await tools.plan({
+      request: {
+        topics: ["CHLL"],
+        keep: [],
+        drop: [],
+        avoid: [],
+        chooseCourses: false,
+        geCount: 0,
+      },
+    });
+
+    expect(result).toHaveProperty("credits.status");
+  });
+
+  it("plan with an empty request returns the credit report and leaves the timetable unchanged", async () => {
+    const store = memoryStore();
+    const userId = "u-credits-noop";
+    const { timetableId, sectionKeys } = await seedOneSectionTimetable(store, userId);
+    const budget: AgentBudget = { calls: 0, maxCalls: 12, maxMs: 60_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId,
+      catalogue: smallCatalogue(),
+      now: () => 0,
+      budget,
+    });
+
+    const result = await tools.plan({ request: {} });
+
+    expect(result).toMatchObject({
+      proposalId: null,
+      credits: expect.objectContaining({ target: null, gap: null }),
+    });
+    expect(result).not.toMatchObject({ reason: "Nothing to change." });
+    expect((await store.getTimetable(userId, timetableId))?.sectionKeys).toEqual(sectionKeys);
+    expect(await store.listProposals(userId, timetableId)).toEqual([]);
+  });
+
+  it("plan does not store a second section when the saved section overlaps avoid", async () => {
+    const store = memoryStore();
+    const userId = "u-avoid-section";
+    await store.saveProfile(userId, {
+      majorCode: "CLL19",
+      courses: coursesFromCompleted([]),
+      yearOfStudy: null,
+      admissionCohort: null,
+      interests: null,
+    });
+    const friday = makeSection({
+      courseCode: "CHLL",
+      section: "001",
+      meetings: [{ day: "FRI", startMinutes: 16 * 60, endMinutes: 17 * 60 + 15 }],
+    });
+    const monday = makeSection({
+      courseCode: "CHLL",
+      section: "002",
+      meetings: [{ day: "MON", startMinutes: 9 * 60, endMinutes: 10 * 60 }],
+    });
+    const timetable = await store.createTimetable(userId, "seed");
+    const written = await store.writeSections(userId, timetable.id, ["CHLL:001"], timetable.revision);
+    expect(written).not.toBeNull();
+    const budget: AgentBudget = { calls: 0, maxCalls: 12, maxMs: 60_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId: timetable.id,
+      catalogue: { sections: [friday, monday], prerequisites: [], majors: [], specializations: [] },
+      now: () => 0,
+      budget,
+    });
+
+    const result = await tools.plan({
+      request: {
+        topics: ["CHLL"],
+        avoid: [{ day: "FRI", startMinutes: 12 * 60, endMinutes: 18 * 60 }],
+      },
+    });
+
+    expect(result).toMatchObject({
+      proposalId: null,
+      droppedWishes: ["CHLL:001 is in a time you want to avoid."],
+    });
+    expect((await store.getTimetable(userId, timetable.id))?.sectionKeys).toEqual(["CHLL:001"]);
+    expect(await store.listProposals(userId, timetable.id)).toEqual([]);
+  });
+
+  it("an unknown preview starts from the saved section keys", async () => {
+    const store = memoryStore();
+    const userId = "u-preview";
+    const { timetableId, sectionKeys } = await seedOneSectionTimetable(store, userId);
+    const catalogue = smallCatalogue();
+    const otherKey = sectionKey(catalogue.sections[2]!);
+    const chllKey = sectionKey(catalogue.sections[1]!);
+    const timetable = await store.getTimetable(userId, timetableId);
+    const decoy = await store.createProposal({
+      userId,
+      timetableId,
+      baseRevision: timetable!.revision,
+      sectionKeys: [otherKey],
+      droppedWishes: [],
+      warnings: [],
+      summary: "decoy",
+    });
+    const writeSections = vi.spyOn(store, "writeSections");
+    const budget: AgentBudget = { calls: 0, maxCalls: 8, maxMs: 30_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId,
+      catalogue,
+      now: () => 0,
+      budget,
+    });
+
+    const result = await tools.plan({
+      request: {
+        topics: ["CHLL"],
+        keep: [],
+        drop: [],
+        avoid: [],
+        baseProposalId: "missing",
+      },
+    });
+
+    expect(result).toMatchObject({
+      droppedWishes: expect.arrayContaining(["Unknown or closed preview."]),
+    });
+    const stored = (await store.listProposals(userId, timetableId)).find((row) => row.id !== decoy.id);
+    expect(stored?.sectionKeys.slice(0, sectionKeys.length)).toEqual(sectionKeys);
+    expect(stored?.sectionKeys).toEqual([...sectionKeys, chllKey]);
+    expect((await store.getTimetable(userId, timetableId))?.sectionKeys).toEqual(sectionKeys);
+    expect(writeSections).not.toHaveBeenCalled();
+  });
+
+  it("an open preview for this timetable is the plan starting section keys", async () => {
+    const store = memoryStore();
+    const userId = "u-open-preview";
+    const { timetableId, sectionKeys } = await seedOneSectionTimetable(store, userId);
+    const catalogue = smallCatalogue();
+    const otherKey = sectionKey(catalogue.sections[2]!);
+    const chllKey = sectionKey(catalogue.sections[1]!);
+    const timetable = await store.getTimetable(userId, timetableId);
+    const open = await store.createProposal({
+      userId,
+      timetableId,
+      baseRevision: timetable!.revision,
+      sectionKeys: [otherKey],
+      droppedWishes: [],
+      warnings: [],
+      summary: "open preview",
+    });
+    const budget: AgentBudget = { calls: 0, maxCalls: 8, maxMs: 30_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId,
+      catalogue,
+      now: () => 0,
+      budget,
+    });
+
+    const result = await tools.plan({
+      request: {
+        topics: ["CHLL"],
+        keep: [],
+        drop: [],
+        avoid: [],
+        baseProposalId: open.id,
+      },
+    });
+
+    expect(result).toMatchObject({ droppedWishes: [] });
+    const stored = (await store.listProposals(userId, timetableId)).find((row) => row.id !== open.id);
+    expect(stored?.sectionKeys).toEqual([otherKey, chllKey]);
+    expect((await store.getTimetable(userId, timetableId))?.sectionKeys).toEqual(sectionKeys);
+  });
+
+  it("a closed preview or a preview for another timetable falls back to the saved keys", async () => {
+    const store = memoryStore();
+    const userId = "u-closed-preview";
+    const { timetableId, sectionKeys } = await seedOneSectionTimetable(store, userId);
+    const catalogue = smallCatalogue();
+    const otherKey = sectionKey(catalogue.sections[2]!);
+    const chllKey = sectionKey(catalogue.sections[1]!);
+    const timetable = await store.getTimetable(userId, timetableId);
+    const closed = await store.createProposal({
+      userId,
+      timetableId,
+      baseRevision: timetable!.revision,
+      sectionKeys: [otherKey],
+      droppedWishes: [],
+      warnings: [],
+      summary: "closed preview",
+    });
+    await store.setProposalStatus(userId, closed.id, "discarded");
+    const otherTimetable = await store.createTimetable(userId, "other");
+    const foreign = await store.createProposal({
+      userId,
+      timetableId: otherTimetable.id,
+      baseRevision: otherTimetable.revision,
+      sectionKeys: [otherKey],
+      droppedWishes: [],
+      warnings: [],
+      summary: "other timetable",
+    });
+    const budget: AgentBudget = { calls: 0, maxCalls: 8, maxMs: 30_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId,
+      catalogue,
+      now: () => 0,
+      budget,
+    });
+
+    const closedResult = await tools.plan({
+      request: {
+        topics: ["CHLL"],
+        keep: [],
+        drop: [],
+        avoid: [],
+        baseProposalId: closed.id,
+      },
+    });
+    const foreignResult = await tools.plan({
+      request: {
+        topics: ["CHLL"],
+        keep: [],
+        drop: [],
+        avoid: [],
+        baseProposalId: foreign.id,
+      },
+    });
+
+    expect(closedResult).toMatchObject({
+      droppedWishes: expect.arrayContaining(["Unknown or closed preview."]),
+    });
+    expect(foreignResult).toMatchObject({
+      droppedWishes: expect.arrayContaining(["Unknown or closed preview."]),
+    });
+    const stored = (await store.listProposals(userId, timetableId)).filter(
+      (row) => row.id !== closed.id,
+    );
+    expect(stored).toHaveLength(2);
+    expect(stored.every((row) => row.sectionKeys.join() === [...sectionKeys, chllKey].join())).toBe(true);
+    expect((await store.getTimetable(userId, timetableId))?.sectionKeys).toEqual(sectionKeys);
+  });
+
+  it("validate of an empty key list still fails no-sections", async () => {
+    const store = memoryStore();
+    const userId = "u-empty-validate";
+    const { timetableId } = await seedOneSectionTimetable(store, userId);
+    const budget: AgentBudget = { calls: 0, maxCalls: 8, maxMs: 30_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId,
+      catalogue: smallCatalogue(),
+      now: () => 0,
+      budget,
+    });
+
+    const out = await tools.validate({ sectionKeys: [] });
+    expect(out).toEqual({ ok: false, failures: [{ rule: "no-sections" }], warnings: [] });
+  });
+
+  it("saved profile without a major asks for a major and stores nothing", async () => {
+    const store = memoryStore();
+    const userId = "u-major";
+    const catalogue = smallCatalogue();
+    const timetable = await store.createTimetable(userId, "major");
+    vi.spyOn(store, "getProfile").mockResolvedValue({
+      userId,
+      saved: true,
+      majorCode: null,
+      courses: [],
+      yearOfStudy: null,
+      admissionCohort: null,
+      interests: null,
+    });
+    const budget: AgentBudget = { calls: 0, maxCalls: 8, maxMs: 30_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId: timetable.id,
+      catalogue,
+      now: () => 0,
+      budget,
+    });
+
+    const result = await tools.plan({
+      request: { topics: ["CHLL"], keep: [], drop: [], avoid: [] },
+    });
+
+    expect(result).toEqual({
+      proposalId: null,
+      reason: "Save a major on your profile before planning.",
+    });
+    expect(await store.listProposals(userId, timetable.id)).toEqual([]);
+  });
+
+  it("stores declared-status and student-reported warnings on the saved proposal", async () => {
+    const store = memoryStore();
+    const userId = "u-held-warnings";
+    await store.saveProfile(userId, {
+      majorCode: "CLL19",
+      courses: [
+        { courseCode: "AAA1000", status: "completed", recognizesPrerequisite: false, reason: null },
+        { courseCode: "CHLL1003", status: "waived", recognizesPrerequisite: true, reason: null },
+      ],
+      yearOfStudy: 2,
+      admissionCohort: "2024/2025",
+      interests: "ignored by planning",
+    });
+    const timetable = await store.createTimetable(userId, "seed");
+    const catalogue: Catalogue = {
+      sections: [
+        makeSection({
+          courseCode: "AAA1000",
+          section: "001",
+          meetings: [{ day: "MON", startMinutes: 10 * 60, endMinutes: 11 * 60 }],
+        }),
+        makeSection({
+          courseCode: "NEED1",
+          section: "001",
+          meetings: [{ day: "TUE", startMinutes: 10 * 60, endMinutes: 11 * 60 }],
+        }),
+      ],
+      prerequisites: [
+        {
+          courseCode: "NEED1",
+          preRequisiteFor: "ALL",
+          majorList: "",
+          requiredCount: 1,
+          groupNo: "G1",
+          requiredCourseCode: "CHLL1003",
+        },
+      ],
+      majors: [], specializations: [],
+    };
+    const budget: AgentBudget = { calls: 0, maxCalls: 8, maxMs: 30_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId: timetable.id,
+      catalogue,
+      now: () => 0,
+      budget,
+    });
+
+    const result = await tools.plan({ request: { topics: ["AAA1000", "NEED1"] } });
+
+    expect(result).toMatchObject({ proposalId: expect.any(String) });
+    const stored = await store.listProposals(userId, timetable.id);
+    expect(stored[0]?.warnings).toEqual(
+      expect.arrayContaining([
+        {
+          rule: "declared-status",
+          sectionKey: "AAA1000:001",
+          courseCode: "AAA1000",
+          status: "completed",
+        },
+        {
+          rule: "prerequisite-student-reported",
+          sectionKey: "NEED1:001",
+          courseCode: "CHLL1003",
+          basis: "waived",
+        },
+      ]),
+    );
+  });
+
+  it("rejects the next tool call when the 12-call budget is already spent", async () => {
+    const store = memoryStore();
+    const userId = "u-call-limit";
+    const catalogue = smallCatalogue();
+    const timetable = await store.createTimetable(userId, "calls");
+    const budget: AgentBudget = { calls: 12, start: 0, maxCalls: 12, maxMs: 60_000 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId: timetable.id,
+      catalogue,
+      now: () => 0,
+      budget,
+    });
+
+    const pending = tools.searchSections({ query: "CHLL" });
+    await expect(pending).rejects.toBeInstanceOf(LimitError);
+    await expect(pending).rejects.toThrow(
+      "This turn reached its 12-tool-call limit. Ask for a smaller change.",
+    );
+  });
+
+  it("rejects a tool call once 60 seconds have passed", async () => {
+    const store = memoryStore();
+    const userId = "u-time-limit";
+    const catalogue = smallCatalogue();
+    const timetable = await store.createTimetable(userId, "time");
+    const budget: AgentBudget = { calls: 0, start: 0, maxCalls: 12, maxMs: 60_000 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId: timetable.id,
+      catalogue,
+      now: () => 60_000,
+      budget,
+    });
+
+    const pending = tools.searchSections({ query: "CHLL" });
+    await expect(pending).rejects.toBeInstanceOf(LimitError);
+    await expect(pending).rejects.toThrow("This turn reached its 60-second limit. Ask for a smaller change.");
+  });
+
+  it("readProfile returns held course codes and does not return completed", async () => {
+    const store = memoryStore();
+    const userId = "u-held-profile";
+    const waived = "CHLL1000";
+    await store.saveProfile(userId, {
+      majorCode: "CLL19",
+      courses: [{ courseCode: waived, status: "waived", recognizesPrerequisite: false, reason: null }],
+      yearOfStudy: 2,
+      admissionCohort: "2024/2025",
+      interests: "languages",
+    });
+    const timetable = await store.createTimetable(userId, "profile");
+    const budget: AgentBudget = { calls: 0, maxCalls: 12, maxMs: 60_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId: timetable.id,
+      catalogue: smallCatalogue(),
+      now: () => 0,
+      budget,
+    });
+
+    const profile = await tools.readProfile();
+
+    expect(profile).toEqual({
+      saved: true,
+      majorCode: "CLL19",
+      majorName: null,
+      majorProgramme: null,
+      courses: [{ courseCode: waived, status: "waived", recognizesPrerequisite: false, reason: null }],
+      heldCourseCodes: [waived],
+      yearOfStudy: 2,
+      admissionCohort: "2024/2025",
+      interests: "languages",
+    });
+    expect(profile).not.toHaveProperty("completed");
+  });
+
+  it("readProfile returns the catalogue name and programme for a saved CPS19 profile", async () => {
+    const store = memoryStore();
+    const userId = "u-cps19";
+    await store.saveProfile(userId, {
+      majorCode: "CPS19",
+      courses: coursesFromCompleted([]),
+      yearOfStudy: 2,
+      admissionCohort: "2024/2025",
+      interests: null,
+    });
+    const timetable = await store.createTimetable(userId, "cps19");
+    const budget: AgentBudget = { calls: 0, maxCalls: 12, maxMs: 60_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId: timetable.id,
+      catalogue: loadCatalogue(),
+      now: () => 0,
+      budget,
+    });
+
+    const profile = await tools.readProfile();
+
+    expect(profile).toMatchObject({
+      saved: true,
+      majorCode: "CPS19",
+      majorProgramme: "FIC",
+      majorName: "COMPUTER SCIENCE",
+    });
+  });
+
+  it("readStudyPlan returns no plan when the saved major has no file or no major code", async () => {
+    expect(TOOL_NAMES).toContain("readStudyPlan");
+    const store = memoryStore();
+    const userId = "u-study-plan";
+    await store.saveProfile(userId, {
+      majorCode: "CPS19",
+      courses: coursesFromCompleted(["CSCI1001"]),
+      yearOfStudy: 2,
+      admissionCohort: "2024/2025",
+      interests: null,
+    });
+    const timetable = await store.createTimetable(userId, "study-plan");
+    const budget: AgentBudget = { calls: 0, maxCalls: 12, maxMs: 60_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId: timetable.id,
+      catalogue: loadCatalogue(),
+      now: () => 0,
+      budget,
+    });
+    const readStudyPlan = (tools as { readStudyPlan?: (args?: unknown) => Promise<unknown> }).readStudyPlan;
+    expect(readStudyPlan).toEqual(expect.any(Function));
+
+    await expect(readStudyPlan!({ majorCode: "CLL19" })).resolves.toEqual({
+      plan: null,
+      rows: [],
+      message: "TermPilot has no reviewed study plan for the saved major.",
+    });
+
+    const unsaved = createTools({
+      store,
+      userId: "u-study-plan-unsaved",
+      timetableId: timetable.id,
+      catalogue: loadCatalogue(),
+      now: () => 0,
+      budget: { calls: 0, maxCalls: 12, maxMs: 60_000, start: 0 },
+    });
+    const readUnsaved = (unsaved as { readStudyPlan?: (args?: unknown) => Promise<unknown> }).readStudyPlan;
+    await expect(readUnsaved!({})).resolves.toEqual({
+      plan: null,
+      rows: [],
+      message: "TermPilot has no reviewed study plan for the saved major.",
+    });
+  });
+
+  it("readPolicy returns every card bound to the saved cohort, including the handbook URL", async () => {
+    expect(TOOL_NAMES).toContain("readPolicy");
+    const store = memoryStore();
+    const userId = "u-policy";
+    await store.saveProfile(userId, {
+      majorCode: "CLL19",
+      courses: [{ courseCode: "CHLL1000", status: "waived", recognizesPrerequisite: false, reason: null }],
+      yearOfStudy: 2,
+      admissionCohort: "2024/2025",
+      interests: "languages",
+    });
+    const timetable = await store.createTimetable(userId, "policy");
+    const budget: AgentBudget = { calls: 0, maxCalls: 12, maxMs: 60_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId: timetable.id,
+      catalogue: smallCatalogue(),
+      now: () => 0,
+      budget,
+    });
+    const readPolicy = (tools as { readPolicy?: (args: Record<string, never>) => Promise<unknown> }).readPolicy;
+    expect(readPolicy).toEqual(expect.any(Function));
+
+    const policy = (await readPolicy!({})) as Array<{ id: string; binding: string }>;
+    expect(policy).toHaveLength(7);
+    for (const card of policy) {
+      expect(typeof card.binding).toBe("string");
+      expect(card.binding.length).toBeGreaterThan(0);
+    }
+    const ge = policy.find((card) => card.id === "ge-size");
+    expect(ge?.binding).toContain("saved cohort falls in that range");
+    expect(JSON.stringify(policy)).toContain(
+      "https://reg.um.edu.mo/download/course-enrol-info/gen-info/Course%20Enrolment%20HandBook.pdf",
+    );
+
+    const unsavedId = "u-policy-unsaved";
+    const unsavedTools = createTools({
+      store,
+      userId: unsavedId,
+      timetableId: timetable.id,
+      catalogue: smallCatalogue(),
+      now: () => 0,
+      budget,
+    });
+    const readUnsaved = (unsavedTools as { readPolicy?: (args: Record<string, never>) => Promise<unknown> })
+      .readPolicy;
+    const unsaved = (await readUnsaved!({})) as Array<{ id: string; binding: string }>;
+    expect(unsaved.find((card) => card.id === "ge-size")?.binding).toContain("not confirmed for this profile");
+  });
+
+  it("plan runs without readPolicy and does not place a candidate equal to a waived code", async () => {
+    const store = memoryStore();
+    const userId = "u-plan-held";
+    const waived = "CHLL1000";
+    await store.saveProfile(userId, {
+      majorCode: "CLL19",
+      courses: [{ courseCode: waived, status: "waived", recognizesPrerequisite: false, reason: null }],
+      yearOfStudy: 2,
+      admissionCohort: "2024/2025",
+      interests: "languages",
+    });
+    const catalogue: Catalogue = {
+      sections: [
+        makeSection({
+          courseCode: waived,
+          section: "001",
+          meetings: [{ day: "MON", startMinutes: 10 * 60, endMinutes: 11 * 60 }],
+        }),
+        makeSection({
+          courseCode: "CSCI1000",
+          section: "001",
+          meetings: [{ day: "TUE", startMinutes: 10 * 60, endMinutes: 11 * 60 }],
+        }),
+      ],
+      prerequisites: [],
+      majors: [], specializations: [],
+    };
+    const timetable = await store.createTimetable(userId, "held-candidate");
+    const budget: AgentBudget = { calls: 0, maxCalls: 12, maxMs: 60_000, start: 0 };
+    const tools = createTools({
+      store,
+      userId,
+      timetableId: timetable.id,
+      catalogue,
+      now: () => 0,
+      budget,
+    });
+
+    const planned = await tools.plan({
+      request: {
+        topics: [],
+        keep: [],
+        drop: [],
+        avoid: [],
+        chooseCourses: true,
+        candidates: [waived, "CSCI1000"],
+      },
+    });
+
+    expect(planned).toMatchObject({
+      proposalId: null,
+      droppedWishes: expect.arrayContaining([
+        "A credit target is needed before more courses can be chosen.",
+      ]),
+    });
+    expect(planned).not.toHaveProperty("reason");
+    const stored = await store.listProposals(userId, timetable.id);
+    expect(stored).toHaveLength(0);
+  });
+});
+
+describe("agent route limits", () => {
+  it("sets 24 tool calls, 60 seconds, and 24 steps", () => {
+    const route = readFileSync("src/app/api/copilotkit/[[...slug]]/route.ts", "utf8");
+    expect(route).toContain("maxCalls: 24");
+    expect(route).toContain("maxMs: 60_000");
+    expect(route).toContain("maxSteps: 24");
+  });
+
+  it("registers readStudyPlan and sets chooseCourses only for a clear request", () => {
+    const route = readFileSync("src/app/api/copilotkit/[[...slug]]/route.ts", "utf8");
+    expect(route).toContain(
+      "Set chooseCourses only when the student clearly asks you to choose the remaining courses",
+    );
+    expect(route).toContain('name: "readStudyPlan"');
+    expect(TOOL_NAMES).toContain("readStudyPlan");
+  });
+
+  it("registers readPolicy and states when to read the profile and policy", () => {
+    const route = readFileSync("src/app/api/copilotkit/[[...slug]]/route.ts", "utf8");
+    expect(route).toContain('name: "readPolicy"');
+    expect(route).toContain("Call readProfile before a personalized recommendation or a plan.");
+    expect(route).toContain(
+      "Call readPolicy when you explain a UM regulation or a recommendation depends on university policy. A request that only moves sections, sets a time window, or names courses does not need readPolicy.",
+    );
+    expect(route).toContain("Keep every heldCourseCode out of candidates. Put a course the student named into topics.");
+    expect(route).toContain(
+      "When you state a card, repeat its status, cohort scope, binding, and the source title, section, and URL.",
+    );
+    expect(route).toContain(
+      "When no reviewed card covers the question, say that TermPilot has no reviewed statement for it.",
+    );
+    expect(route).toContain("Do not describe a result as degree progress or as university approval.");
   });
 });

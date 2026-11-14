@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import { SharedSchedule } from "@/components/shared-schedule";
 import { appStore } from "@/db/server-store";
-import { loadCatalogue, sectionKey } from "@/domain/catalogue";
+import { loadCatalogue, parseSectionKey, sectionKey } from "@/domain/catalogue";
+import { loadCreditBook } from "@/domain/credit-snapshot";
+import { creditReport, formatCredits } from "@/domain/credits";
 import type { Section } from "@/domain/types";
 
 export default async function SharedTimetablePage({ params }: { params: Promise<{ token: string }> }) {
@@ -19,5 +21,8 @@ export default async function SharedTimetablePage({ params }: { params: Promise<
     if (section) sections.push(section);
   }
 
-  return <SharedSchedule title={row.title} sections={sections} />;
+  const courseCodes = row.sectionKeys.map((key) => parseSectionKey(key).courseCode);
+  const creditLabel = formatCredits(creditReport(courseCodes, loadCreditBook()));
+
+  return <SharedSchedule title={row.title} sections={sections} creditLabel={creditLabel} />;
 }

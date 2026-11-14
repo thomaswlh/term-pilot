@@ -1,13 +1,42 @@
 import { describe, expect, it } from "vitest";
-import { demoCredits, miniature } from "../src/domain/credits";
+import {
+  creditBook,
+  creditReport,
+  formatCourseCredits,
+  formatCredits,
+  miniature,
+  type CreditRecord,
+} from "../src/domain/credits";
 import { hueFor } from "../src/domain/hue";
 import type { Section } from "../src/domain/types";
+
+const records: CreditRecord[] = [
+  {
+    courseCode: "GELH1012",
+    credits: 3,
+    sourceUrl: "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GELH1012",
+    retrievedAt: "2026-11-10",
+  },
+  {
+    courseCode: "GESB1001",
+    credits: 1,
+    sourceUrl: "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=GESB1001",
+    retrievedAt: "2026-11-10",
+  },
+  {
+    courseCode: "CPED1001",
+    credits: 0.5,
+    sourceUrl: "https://isw.um.edu.mo/siwci/faces/courseDetailUG?courseCode=CPED1001",
+    retrievedAt: "2026-11-10",
+  },
+];
 
 const HUES = ["green", "amber", "teal", "blue"] as const;
 
 function section(partial: Pick<Section, "courseCode" | "section" | "meetings">): Section {
   return {
     title: "Synthetic section",
+    courseType: "",
     unit: "1",
     department: "FAH",
     teacher: "",
@@ -17,16 +46,23 @@ function section(partial: Pick<Section, "courseCode" | "section" | "meetings">):
   };
 }
 
-describe("demoCredits", () => {
-  it("counts 3 for each distinct course code and always labels Demo credits", () => {
-    expect(demoCredits(["CSCI1004", "CSCI1004", "GELH1012"])).toEqual({
-      total: 6,
-      label: "Demo credits",
+describe("credit snapshot", () => {
+  const book = creditBook(records);
+
+  it("sums known courses once and lists unknown codes", () => {
+    const report = creditReport(["GELH1012", "GELH1012", "GESB1001", "NOPE1000"], book);
+    expect(report).toEqual({
+      verifiedTotal: 4,
+      unknownCourseCodes: ["NOPE1000"],
+      status: "incomplete",
     });
+    expect(formatCredits(report)).toBe("4 credits verified, NOPE1000 unknown");
   });
 
-  it("returns zero Demo credits when there are no course codes", () => {
-    expect(demoCredits([])).toEqual({ total: 0, label: "Demo credits" });
+  it("formats a fractional total and a met total without calling a course 3 credits by count", () => {
+    expect(formatCredits(creditReport(["CPED1001"], book))).toBe("0.5 credits");
+    expect(formatCredits(creditReport(["GELH1012", "GESB1001"], book))).toBe("4 credits");
+    expect(formatCourseCredits("NOPE1000", book)).toBe("credits unknown");
   });
 });
 

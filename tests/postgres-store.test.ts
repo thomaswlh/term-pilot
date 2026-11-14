@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import postgres from "postgres";
+import { coursesFromCompleted } from "../src/domain/academic";
 import { postgresStore } from "../src/db/postgres";
 
 describe("postgresStore", () => {
@@ -12,6 +13,7 @@ describe("postgresStore", () => {
     const mainUser = randomUUID();
     const userB = randomUUID();
     const userA = randomUUID();
+    const legacyUser = randomUUID();
 
     try {
       const schema = readFileSync(new URL("../src/db/schema.sql", import.meta.url), "utf8");
@@ -20,19 +22,55 @@ describe("postgresStore", () => {
       const store = postgresStore(sql);
 
       const newUser = await store.getProfile(mainUser);
-      expect(newUser).toEqual({ userId: mainUser, majorCode: null, completed: [], saved: false });
+      expect(newUser).toEqual({
+        userId: mainUser,
+        majorCode: null,
+        courses: [],
+        yearOfStudy: null,
+        admissionCohort: null,
+        interests: null,
+        saved: false,
+      });
 
-      const saved1 = await store.saveProfile(mainUser, { majorCode: "CPS19", completed: [] });
+      const saved1 = await store.saveProfile(mainUser, {
+        majorCode: "CPS19",
+        courses: coursesFromCompleted([]),
+        yearOfStudy: null,
+        admissionCohort: null,
+        interests: null,
+      });
       expect(saved1.saved).toBe(true);
       expect(saved1.majorCode).toBe("CPS19");
-      expect(saved1.completed).toEqual([]);
+      expect(saved1.courses).toEqual([]);
+      expect(saved1.yearOfStudy).toBeNull();
+      expect(saved1.admissionCohort).toBeNull();
+      expect(saved1.interests).toBeNull();
 
       const saved2 = await store.saveProfile(mainUser, {
         majorCode: "CLL19",
-        completed: ["CHLL1003"],
+        courses: coursesFromCompleted(["CHLL1003"]),
+        yearOfStudy: null,
+        admissionCohort: null,
+        interests: null,
       });
       expect(saved2.majorCode).toBe("CLL19");
-      expect(saved2.completed).toEqual(["CHLL1003"]);
+      expect(saved2.courses).toEqual(coursesFromCompleted(["CHLL1003"]));
+
+      await sql`
+        insert into profiles (user_id, major_code, completed, saved, course_records)
+        values (${legacyUser}, 'CPS19', ${["CSCI1001"]}, true, null)
+      `;
+      const legacy = await store.getProfile(legacyUser);
+      expect(legacy.courses).toEqual(coursesFromCompleted(["CSCI1001"]));
+      await store.saveProfile(legacyUser, {
+        majorCode: "CPS19",
+        courses: [],
+        yearOfStudy: null,
+        admissionCohort: null,
+        interests: null,
+      });
+      await sql`update profiles set completed = ${["CSCI1001"]} where user_id = ${legacyUser}`;
+      expect((await store.getProfile(legacyUser)).courses).toEqual([]);
 
       const ttDefault = await store.createTimetable(mainUser);
       expect(ttDefault.title).toBe("Untitled timetable");
@@ -102,7 +140,7 @@ describe("postgresStore", () => {
       expect(await store.getSharedTimetable(token!)).toBeNull();
     } finally {
       await sql`delete from timetables where user_id in (${mainUser}, ${userB}, ${userA})`;
-      await sql`delete from profiles where user_id in (${mainUser}, ${userB}, ${userA})`;
+      await sql`delete from profiles where user_id in (${mainUser}, ${userB}, ${userA}, ${legacyUser})`;
       await sql.end({ timeout: 5 });
     }
   });

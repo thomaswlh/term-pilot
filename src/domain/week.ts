@@ -45,6 +45,13 @@ function conflictKeys(failures: RuleFailure[]): Set<string> {
       keys.add(failure.sectionKeys[1]);
       continue;
     }
+    if (failure.rule === "duplicate-course") {
+      for (const key of failure.sectionKeys) keys.add(key);
+      continue;
+    }
+    if (failure.rule === "no-sections") {
+      continue;
+    }
     keys.add(failure.sectionKey);
   }
   return keys;

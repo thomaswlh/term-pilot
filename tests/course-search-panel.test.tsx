@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { CourseSearchPanel } from "../src/components/course-search-panel";
+import { statusLine } from "../src/domain/academic";
 import type { SearchHitDetail } from "../src/domain/course-group";
 
 const mockHit: SearchHitDetail = {
@@ -23,6 +24,7 @@ const mockHit: SearchHitDetail = {
     },
   ],
   meetings: [{ day: "MON", startMinutes: 10 * 60, endMinutes: 11 * 60 + 15 }],
+  credits: 3,
 };
 
 const mockSiblingHit: SearchHitDetail = {
@@ -37,6 +39,7 @@ const mockSiblingHit: SearchHitDetail = {
   restriction: "",
   prerequisites: [],
   meetings: [{ day: "TUE", startMinutes: 14 * 60, endMinutes: 15 * 60 + 15 }],
+  credits: 3,
 };
 
 describe("CourseSearchPanel", () => {
@@ -284,6 +287,7 @@ describe("CourseSearchPanel", () => {
             courseCode: "GELH1012",
             section: "001",
             title: "World History",
+            courseType: "",
             unit: "3",
             department: "FAH",
             teacher: "Dr. Smith",
@@ -342,6 +346,10 @@ describe("CourseSearchPanel", () => {
     expect(html).toContain("Untimed Course");
     expect(html).toContain("This section has no scheduled meetings and will not appear on the weekly calendar.");
     expect(html).toContain("+ Add to Timetable");
+    const addRowStart = html.indexOf("+ Add</button>");
+    expect(addRowStart).toBeGreaterThan(-1);
+    expect(html.slice(Math.max(0, addRowStart - 120), addRowStart)).not.toContain("disabled=");
+    expect(html).not.toMatch(/\+ Add to Timetable[\s\S]{0,400}disabled/);
   });
 
   it("supports stepper across filtered-out sections and explains Fits Schedule removal", () => {
@@ -349,6 +357,7 @@ describe("CourseSearchPanel", () => {
       courseCode: "GELH1012",
       section: "001",
       title: "World History",
+      courseType: "",
       unit: "3",
       department: "FAH",
       teacher: "Dr. Smith",
@@ -392,11 +401,103 @@ describe("CourseSearchPanel", () => {
     expect(html).toContain("This section is hidden by Fits Schedule because it overlaps GELH1012.");
   });
 
+  it("explains Fits Schedule removal for restriction and unverified, not overlap", () => {
+    const restrictedHit: SearchHitDetail = {
+      ...mockHit,
+      sectionKey: "CSCI1004:001",
+      courseCode: "CSCI1004",
+      section: "001",
+      restriction: "Class not for : - CLL19",
+    };
+    const unverifiedHit: SearchHitDetail = {
+      sectionKey: "BECO4007:001",
+      courseCode: "BECO4007",
+      section: "001",
+      title: "Topic",
+      teacher: "",
+      unit: "FBA",
+      department: "BEC",
+      restriction: "Class for : - FBA - THIRD YEAR / FOURTH YEAR",
+      meetings: [{ day: "WED", startMinutes: 10 * 60, endMinutes: 11 * 60 }],
+      credits: 3,
+    };
+    const fitContext = {
+      yearOfStudy: null,
+      programme: "FBA",
+      known: {
+        majors: ["CLL19", "ACC21"],
+        programmes: ["FBA"],
+        specializations: [] as { majorCode: string; code: string }[],
+      },
+    };
+
+    const restrictedHtml = renderToStaticMarkup(
+      <CourseSearchPanel
+        open={true}
+        onToggleOpen={() => {}}
+        query="CSCI"
+        onQueryChange={() => {}}
+        hits={[restrictedHit, mockSiblingHit]}
+        searching={false}
+        savedSections={[]}
+        savedKeys={[]}
+        majorCode="CLL19"
+        fitContext={fitContext}
+        openProposal={false}
+        hoveredKey={null}
+        onHoverKey={() => {}}
+        pinnedKey="CSCI1004:001"
+        onPinKey={() => {}}
+        onAddSection={() => {}}
+        busyKey={null}
+        recentQueries={[]}
+        notice={null}
+        focusNonce={0}
+        activeFilter="fits"
+      />,
+    );
+
+    expect(restrictedHtml).toContain("This section is hidden by Fits Schedule because Not for CLL19");
+    expect(restrictedHtml).not.toContain("because it overlaps");
+
+    const unverifiedHtml = renderToStaticMarkup(
+      <CourseSearchPanel
+        open={true}
+        onToggleOpen={() => {}}
+        query="BECO"
+        onQueryChange={() => {}}
+        hits={[unverifiedHit, mockSiblingHit]}
+        searching={false}
+        savedSections={[]}
+        savedKeys={[]}
+        majorCode="ACC21"
+        fitContext={fitContext}
+        openProposal={false}
+        hoveredKey={null}
+        onHoverKey={() => {}}
+        pinnedKey="BECO4007:001"
+        onPinKey={() => {}}
+        onAddSection={() => {}}
+        busyKey={null}
+        recentQueries={[]}
+        notice={null}
+        focusNonce={0}
+        activeFilter="fits"
+      />,
+    );
+
+    expect(unverifiedHtml).toContain("This section is hidden by Fits Schedule because");
+    expect(unverifiedHtml).toContain("unverified");
+    expect(unverifiedHtml).not.toContain("because it overlaps");
+    expect(unverifiedHtml).not.toMatch(/unverified\.\./);
+  });
+
   it("shows all sections and no hidden notice when activeFilter is all", () => {
     const savedOverlap = {
       courseCode: "GELH1012",
       section: "001",
       title: "World History",
+      courseType: "",
       unit: "3",
       department: "FAH",
       teacher: "Dr. Smith",
@@ -445,9 +546,17 @@ describe("CourseSearchPanel", () => {
       unit: "3",
       department: "FST",
       notes: "",
-      restriction: "CLASS NOT FOR: CLL19 STUDENTS",
+      restriction: "Class not for : - CLL19",
       prerequisites: [],
       meetings: [{ day: "MON", startMinutes: 10 * 60, endMinutes: 11 * 60 }],
+    };
+    const fitContext = {
+      yearOfStudy: null,
+      known: {
+        majors: ["CLL19"],
+        programmes: [] as string[],
+        specializations: [] as { majorCode: string; code: string }[],
+      },
     };
 
     const html = renderToStaticMarkup(
@@ -461,6 +570,7 @@ describe("CourseSearchPanel", () => {
         savedSections={[]}
         savedKeys={[]}
         majorCode="CLL19"
+        fitContext={fitContext}
         openProposal={false}
         hoveredKey={null}
         onHoverKey={() => {}}
@@ -537,5 +647,47 @@ describe("CourseSearchPanel", () => {
     expect(infoHtml).toContain("Saved as a new timetable.");
     expect(infoHtml).toContain('color:#596573');
     expect(infoHtml).not.toContain('color:#B3261E');
+  });
+
+  it("shows a student-reported status line for a profile course and keeps the section addable", () => {
+    const line = statusLine("waived", true);
+    const html = renderToStaticMarkup(
+      <CourseSearchPanel
+        open={true}
+        onToggleOpen={() => {}}
+        query="MATH1001"
+        onQueryChange={() => {}}
+        hits={[mockHit, { ...mockSiblingHit, courseCode: "PHYS1001", sectionKey: "PHYS1001:002", title: "Physics I" }]}
+        searching={false}
+        savedSections={[]}
+        savedKeys={[]}
+        majorCode="CPS19"
+        openProposal={false}
+        hoveredKey={null}
+        onHoverKey={() => {}}
+        pinnedKey="MATH1001:001"
+        onPinKey={() => {}}
+        onAddSection={() => {}}
+        busyKey={null}
+        recentQueries={[]}
+        notice={null}
+        focusNonce={0}
+        courses={[
+          {
+            courseCode: "MATH1001",
+            status: "waived",
+            recognizesPrerequisite: true,
+            reason: null,
+          },
+        ]}
+      />,
+    );
+
+    expect(html.split(line)).toHaveLength(2);
+    expect(html).toContain("Fits schedule");
+    expect(html).toContain("+ Add");
+    expect(html).not.toMatch(/<button[^>]*disabled=""[^>]*>\+ Add<\/button>/);
+    expect(html).toContain("MATH1001");
+    expect(html).toContain("PHYS1001");
   });
 });

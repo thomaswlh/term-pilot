@@ -28,7 +28,7 @@ export type GalleryCard = {
   id: string;
   title: string;
   editedLabel: string;
-  creditTotal: number;
+  creditLabel: string;
   columns: MiniatureColumn[];
 };
 
@@ -419,7 +419,7 @@ export function Gallery({ cards }: { cards: GalleryCard[] }) {
                         lineHeight: 1.4,
                       }}
                     >
-                      {card.editedLabel} · {card.creditTotal} credits
+                      {card.editedLabel} · {card.creditLabel}
                     </p>
                   </div>
                   <div style={{ pointerEvents: "auto", flexShrink: 0 }}>

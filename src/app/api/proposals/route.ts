@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { UnauthorizedError, requireUserId } from "@/auth";
 import { appStore } from "@/db/server-store";
 import { loadCatalogue } from "@/domain/catalogue";
+import { loadCreditBook } from "@/domain/credit-snapshot";
 import { planRequest, type AvoidRange, type PlanRequest } from "@/domain/planner";
 import type { Catalogue, Day } from "@/domain/types";
 
@@ -64,26 +65,35 @@ export async function POST(req: Request) {
     const outcome = planRequest({
       request: plan.request,
       currentKeys: timetable.sectionKeys,
-      profile: { majorCode: profile.majorCode, completed: profile.completed },
+      profile: {
+        majorCode: profile.majorCode,
+        courses: profile.courses,
+        yearOfStudy: profile.yearOfStudy,
+      },
       catalogue: catalogue(),
+      credits: loadCreditBook(),
     });
     if (outcome.proposal === null) {
       return NextResponse.json({ proposalId: null, reason: outcome.reason });
     }
 
     const draft = outcome.proposal;
+    if (!draft.storePreview) {
+      return NextResponse.json({
+        proposalId: null,
+        summary: draft.summary,
+        credits: draft.credits,
+        droppedWishes: draft.droppedWishes,
+      });
+    }
+
     const created = await appStore.createProposal({
       userId,
       timetableId: timetable.id,
       baseRevision: timetable.revision,
       sectionKeys: draft.sectionKeys,
       droppedWishes: draft.droppedWishes,
-      warnings: draft.warnings.map((warning) => ({
-        rule: warning.rule,
-        sectionKey: warning.sectionKey,
-        groupNo: warning.groupNo,
-        requiredCount: warning.requiredCount,
-      })),
+      warnings: draft.warnings,
       summary: draft.summary,
     });
     return NextResponse.json({ proposalId: created.id, summary: draft.summary });

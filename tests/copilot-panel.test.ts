@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 
 describe("copilot panel", () => {
   const panel = readFileSync("src/components/copilot-panel.tsx", "utf8");
+  const toolState = readFileSync("src/components/plan-tool-state.ts", "utf8");
   const promptInput = readFileSync("src/components/ai/prompt-input.tsx", "utf8");
   const layout = readFileSync("src/app/layout.tsx", "utf8");
   const css = readFileSync("src/app/globals.css", "utf8");
@@ -28,11 +29,11 @@ describe("copilot panel", () => {
     expect(panel).not.toContain("Apply to the current timetable");
     expect(panel).not.toContain("Apply to timetable");
     expect(panel).toContain("The assistant is unavailable. Search and manual add still work.");
-    expect(panel).toContain("searchSections");
-    expect(panel).toContain("readProfile");
-    expect(panel).toContain("readTimetable");
-    expect(panel).toContain("plan");
-    expect(panel).toContain("validate");
+    expect(toolState).toContain("searchSections");
+    expect(toolState).toContain("readProfile");
+    expect(toolState).toContain("readTimetable");
+    expect(toolState).toContain("plan");
+    expect(toolState).toContain("validate");
     expect(layout).toContain("CopilotKitProvider");
     expect(layout).toContain("@copilotkit/react-core/v2");
     expect(layout).not.toMatch(/CopilotChat|CopilotPopup|CopilotSidebar/);

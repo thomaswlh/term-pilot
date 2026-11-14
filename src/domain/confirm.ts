@@ -91,8 +91,13 @@ export function decideConfirm(input: {
   if (input.timetable.revision !== input.proposal.baseRevision) {
     return { ok: false, reason: "stale" };
   }
-  if (!input.report.ok) {
-    const first = input.report.failures[0];
+  const blocking = input.report.ok
+    ? []
+    : input.proposal.sectionKeys.length === 0
+      ? input.report.failures.filter((failure) => failure.rule !== "no-sections")
+      : input.report.failures;
+  if (blocking.length > 0) {
+    const first = blocking[0];
     return {
       ok: false,
       reason: "illegal",

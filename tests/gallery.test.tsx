@@ -15,7 +15,7 @@ const sampleCard: GalleryCard = {
   id: "tt-1",
   title: "Semester 1",
   editedLabel: "7 Nov 2026",
-  creditTotal: 6,
+  creditLabel: "6 credits",
   columns: [
     { day: "MON", blocks: [{ hue: "green", top: 0.2 }] },
     { day: "TUE", blocks: [] },
@@ -49,6 +49,6 @@ describe("Gallery component", () => {
     expect(source).toContain('from "@/components/ui/dialog"');
     expect(source).toContain("Delete this timetable?");
     expect(source).toContain("permanently removed");
-    expect(source).not.toContain("creditLabel");
+    expect(source).toContain("creditLabel");
   });
 });

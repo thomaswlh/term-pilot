@@ -1,0 +1,351 @@
+{
+  "majorCode": "CLL19",
+  "curriculumYear": 2019,
+  "source": {
+    "title": "文學士學位（中國語言文學）課程 學術與教學編排（適用於2019/2020學年或之後入學學生）",
+    "url": "https://fah.um.edu.mo/wp-content/uploads/2025/04/Study-Plan-CLL19_2026.7.pdf",
+    "retrievedAt": "2026-11-12"
+  },
+  "courses": [
+    {
+      "sourceCode": "CHLL1001",
+      "catalogueCode": "CHLL1001",
+      "kind": "compulsory",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL1002",
+      "catalogueCode": "CHLL1002",
+      "kind": "compulsory",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL1003",
+      "catalogueCode": "CHLL1003",
+      "kind": "compulsory",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL1004",
+      "catalogueCode": "CHLL1004",
+      "kind": "compulsory",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL1005",
+      "catalogueCode": "CHLL1005",
+      "kind": "required-elective",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL1006",
+      "catalogueCode": "CHLL1006",
+      "kind": "required-elective",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL1007",
+      "catalogueCode": "CHLL1007",
+      "kind": "required-elective",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL1008",
+      "catalogueCode": "CHLL1008",
+      "kind": "required-elective",
+      "suggestedYear": 1,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL2000",
+      "catalogueCode": "CHLL2000",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL2001",
+      "catalogueCode": "CHLL2001",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL2002",
+      "catalogueCode": "CHLL2002",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL2003",
+      "catalogueCode": "CHLL2003",
+      "kind": "compulsory",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL2004",
+      "catalogueCode": "CHLL2004",
+      "kind": "required-elective",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL2005",
+      "catalogueCode": "CHLL2005",
+      "kind": "required-elective",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL2006",
+      "catalogueCode": "CHLL2006",
+      "kind": "required-elective",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL2007",
+      "catalogueCode": "CHLL2007",
+      "kind": "required-elective",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL2008",
+      "catalogueCode": "CHLL2008",
+      "kind": "required-elective",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL2009",
+      "catalogueCode": "CHLL2009",
+      "kind": "required-elective",
+      "suggestedYear": 2,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL3000",
+      "catalogueCode": "CHLL3000",
+      "kind": "compulsory",
+      "suggestedYear": 3,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL3001",
+      "catalogueCode": "CHLL3001",
+      "kind": "compulsory",
+      "suggestedYear": 3,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL3002",
+      "catalogueCode": "CHLL3002",
+      "kind": "required-elective",
+      "suggestedYear": 3,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL3003",
+      "catalogueCode": "CHLL3003",
+      "kind": "required-elective",
+      "suggestedYear": 3,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL3004",
+      "catalogueCode": "CHLL3004",
+      "kind": "required-elective",
+      "suggestedYear": 3,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL3005",
+      "catalogueCode": "CHLL3005",
+      "kind": "required-elective",
+      "suggestedYear": 3,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL3006",
+      "catalogueCode": "CHLL3006",
+      "kind": "required-elective",
+      "suggestedYear": 3,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL4000",
+      "catalogueCode": "CHLL4000",
+      "kind": "compulsory",
+      "suggestedYear": 4,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL4001",
+      "catalogueCode": "CHLL4001",
+      "kind": "compulsory",
+      "suggestedYear": 4,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL4002",
+      "catalogueCode": "CHLL4002",
+      "kind": "compulsory",
+      "suggestedYear": 4,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL4003",
+      "catalogueCode": "CHLL4003",
+      "kind": "compulsory",
+      "suggestedYear": 4,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL4004",
+      "catalogueCode": "CHLL4004",
+      "kind": "required-elective",
+      "suggestedYear": 4,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL4005",
+      "catalogueCode": "CHLL4005",
+      "kind": "required-elective",
+      "suggestedYear": 4,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL4006",
+      "catalogueCode": "CHLL4006",
+      "kind": "required-elective",
+      "suggestedYear": 4,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL4007",
+      "catalogueCode": "CHLL4007",
+      "kind": "required-elective",
+      "suggestedYear": 4,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    },
+    {
+      "sourceCode": "CHLL4010",
+      "catalogueCode": "CHLL4010",
+      "kind": "required-elective",
+      "suggestedYear": 4,
+      "suggestedSemester": null,
+      "stream": null,
+      "verification": "verified",
+      "mapping": null
+    }
+  ]
+}

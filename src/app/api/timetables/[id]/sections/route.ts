@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { UnauthorizedError, requireUserId } from "@/auth";
 import { appStore } from "@/db/server-store";
+import { prerequisiteClaims } from "@/domain/academic";
 import { loadCatalogue } from "@/domain/catalogue";
 import { decideManualAdd, decideManualRemove } from "@/domain/confirm";
 import { validateSections } from "@/domain/rules";
@@ -64,7 +65,15 @@ export async function POST(req: Request, context: RouteContext) {
     const union = timetable.sectionKeys.includes(sectionKey)
       ? [...timetable.sectionKeys]
       : [...timetable.sectionKeys, sectionKey];
-    const report = validateSections(union, { majorCode: profile.majorCode, completed: profile.completed }, catalogue());
+    const report = validateSections(
+      union,
+      {
+        majorCode: profile.majorCode,
+        claims: prerequisiteClaims(profile.courses),
+        yearOfStudy: profile.yearOfStudy,
+      },
+      catalogue(),
+    );
     const decision = decideManualAdd({
       profileSaved: profile.saved,
       timetable,
@@ -80,7 +89,7 @@ export async function POST(req: Request, context: RouteContext) {
     if (!written) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
-    return NextResponse.json({ timetable: written });
+    return NextResponse.json({ timetable: written, warnings: report.warnings });
   } catch (err) {
     if (err instanceof UnauthorizedError) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
