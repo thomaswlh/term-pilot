@@ -215,3 +215,18 @@
 - Purpose: execute the approved plan and check the integrated result. No commit and no merge.
 - Generation: task reviews are recorded in `.superpowers/sdd/progress.md`. After Task 7, PDFKit text from the opened CLL19 and JAP25 PDFs was compared with the JSON. All 34 and 36 course codes match, with the same compulsory or required-elective kind and the same year. Neither PDF names a GE course code. `npx tsc --noEmit` passed after replacing two invalid `null as const` assertions in the search-panel test. `npx eslint . --ignore-pattern .worktrees --ignore-pattern .superpowers` passed. `npx vitest run --exclude '**/.worktrees/**' --exclude '**/.superpowers/**'` passed 358 tests and skipped 1. `npx next build` compiled. No live model call was made.
 - Human verification: not yet done. A signed-in browser session and a real assistant turn are still needed.
+
+## 2026-11-16 — What2Reg community reviews
+
+- Model: Grok 4.7, in Cursor.
+- Purpose: add optional public course opinions from the official What2Reg @ UM read-only MCP (`https://umeh.top/mcp`) without scraping and without changing hard rules or the add-drop catalogue.
+- Sources read: https://umeh.top/terms-of-service (updated 2026-10-24), `https://umeh.top/.well-known/oauth-protected-resource/mcp`, `https://clerk.umeh.top/.well-known/oauth-authorization-server`, and UMHelper/next-web files `plugins/what2reg-um/mcp.json`, `plugins/what2reg-um/skills/um-course-advisor/SKILL.md`, `lib/mcp/schemas.ts`, `lib/mcp/auth.ts`, `lib/mcp/constants.ts`, `lib/mcp/rate-limit.ts`, `app/mcp/route.ts`, and `app/oauth-consent/[[...index]]/page.tsx`.
+- Generation: server-side MCP client, per-student OAuth (`umhelper:read` plus documented `offline_access` refresh), 24-hour cache, course-card attribution, and `readReviews`. Tests use fixtures. No live review call was made.
+- Human verification: not yet done. The student still needs to register the OAuth client on What2Reg, set the placeholder env vars, and confirm a connected account sees grade, difficulty, usefulness, and links on umeh.top.
+
+## 2026-11-16 — review understanding and request-specific reports
+
+- Model: Grok 4.7, in Cursor. The runtime path can call DeepSeek `deepseek-flash` only when `DEEPSEEK_API_KEY` is set. This session did not call DeepSeek or the live What2Reg MCP.
+- Purpose: turn a retrieved review page into a fixed-schema reading and a short report that follows the student's question, without changing legal section choice.
+- Generation: `buildReviewUnderstanding`, grounded model JSON parsing, `rewriteForRequest`, a 24-hour understanding cache, course-card blurb, and `readReviews` / `reviewQuestion` prompt text. Fixture tests cover schema, conflict, two questions, the compulsory-course guard, and a failed model call.
+- Human verification: not yet done. A signed-in session with a What2Reg token and a DeepSeek key is still needed to see a live blurb.

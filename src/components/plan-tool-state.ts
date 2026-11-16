@@ -31,6 +31,11 @@ const TOOL_PHASE_TITLES: Record<string, Record<"running" | "done" | "failed", st
     done: "Checked the rules",
     failed: "Could not check the rules",
   },
+  readReviews: {
+    running: "Reading community reviews",
+    done: "Read community reviews",
+    failed: "Community reviews are unavailable",
+  },
 };
 
 export function toolTitle(

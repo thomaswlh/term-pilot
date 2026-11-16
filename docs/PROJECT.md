@@ -6,7 +6,7 @@ Updated on 2026-11-07 to reflect the implementation progress of TermPilot AI, an
 
 TermPilot AI is a desktop web application combining manual timetable construction with conversational AI planning. It allows students to explore course offerings, validate complex university enrolment rules, compare sections on a weekly calendar, and collaborate with an AI planning assistant without risking accidental modifications to saved timetables.
 
-The system is independent of What2Reg branding, UI assets, and dependencies.
+The system is independent of What2Reg branding and UI assets. Public course opinions can be read from the official What2Reg @ UM MCP after a student authorizes `umhelper:read`. Those opinions do not change the catalogue, the hard rules, or which legal section is chosen. See `docs/WHAT2REG.md`.
 
 ## Architecture & Technology Stack
 

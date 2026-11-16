@@ -15,7 +15,7 @@ Read `AGENTS.md` and `docs/PROJECT.md` before making substantive changes. Ensure
 - **Catalogue:** `src/domain/catalogue.ts` loads UM 1st semester 2026/2027 workbooks from `docs/ref/add-drop/`.
 - **Search Engine:** `src/domain/search.ts` provides in-memory BM25 retrieval over section codes, prefixes, and instructor names.
 - **Rules Engine:** `src/domain/rules.ts` evaluates prerequisites, class restrictions, schedule collisions, and section completeness.
-- **CopilotKit Agent:** `@copilotkit/react-core` and `@copilotkit/runtime` 1.85.0 connected to DeepSeek `deepseek-flash` (`https://api.deepseek.com`) via `@ai-sdk/openai`. Five tools: `searchSections`, `readProfile`, `readTimetable`, `plan`, and `validate`. Budget: max 8 calls / 30s per turn.
+- **CopilotKit Agent:** `@copilotkit/react-core` and `@copilotkit/runtime` 1.85.0 connected to DeepSeek `deepseek-flash` (`https://api.deepseek.com`) via `@ai-sdk/openai`. Tools include `searchSections`, `readProfile`, `readPolicy`, `readStudyPlan`, `readTimetable`, `plan`, `validate`, and `readReviews`. `readReviews` is capped at 4 calls per turn and fails open. See `docs/WHAT2REG.md`.
 - **UI Components:** Custom shadcn/ui compositions (`button`, `input`, `dialog`, `dropdown-menu`) and custom AI chat elements (`src/components/ai/`) with Streamdown markdown rendering.
 
 ## Verification Commands

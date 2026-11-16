@@ -48,3 +48,9 @@ alter table proposals add column if not exists created_at timestamptz not null d
 alter table proposals drop constraint if exists proposals_status_check;
 alter table proposals add constraint proposals_status_check
   check (status in ('open', 'applied', 'saved-as-new', 'discarded'));
+
+create table if not exists what2reg_grants (
+  user_id text primary key,
+  sealed text not null,
+  updated_at timestamptz not null default now()
+);

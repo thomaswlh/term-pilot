@@ -11,6 +11,7 @@ import {
   ArrowDownIcon,
   ClockIcon,
 } from "lucide-react";
+import { CourseCommunityReviews } from "@/components/course-community-reviews";
 import { Button } from "@/components/ui/button";
 import { statusLine, type CourseRecord } from "@/domain/academic";
 import { theme } from "@/domain/theme";
@@ -532,6 +533,9 @@ export function CourseSearchPanel({
             const sectionsPanelId = `course-sections-${group.courseCode}`;
             const isHovered = hoveredCourse === group.courseCode;
             const reported = courses.find((course) => course.courseCode === group.courseCode);
+            const reviewInstructors = [
+              ...new Set(group.sections.map((section) => section.teacher.trim()).filter((name) => name.length > 0)),
+            ].slice(0, 4);
 
             return (
               <article
@@ -731,6 +735,7 @@ export function CourseSearchPanel({
                     </div>
                   );
                     })}
+                    <CourseCommunityReviews courseCode={group.courseCode} instructors={reviewInstructors} />
                   </div>
                 ) : null}
               </article>
